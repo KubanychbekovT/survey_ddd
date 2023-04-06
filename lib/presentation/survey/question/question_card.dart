@@ -66,14 +66,13 @@ class _QuestionCardState extends State<QuestionCard> {
     bool isSelected = answer == selectedAnswer;
     return InkWell(
       onTap: () {
-        if (selectedAnswer == null) {
           if (answer.isCorrect) {
             score++;
           }
           setState(() {
             selectedAnswer = answer;
           });
-        }
+        print("tapped");
       },
       highlightColor: Colors.transparent, // set the highlight color
       splashColor: Color(0xff6d30bc),
@@ -83,7 +82,7 @@ class _QuestionCardState extends State<QuestionCard> {
         width: double.infinity,
         decoration: BoxDecoration(
           border: Border.all(color: Color(0xffe8dbf9)),
-         color: const Color(0xffffffff),
+         color: isSelected?Colors.yellow:Color(0xffffffff),
           borderRadius: BorderRadius.circular(5),
         ),
         child: Text(answer.answerText,
