@@ -15,12 +15,13 @@ class AnswerOption extends StatelessWidget {
       highlightColor: Colors.transparent, // set the highlight color
       splashColor: Color(0xff6d30bc),
       child: Container(
+
         margin: EdgeInsets.fromLTRB(0, 0, 0, 32),
         padding: EdgeInsets.fromLTRB(31, 31, 31, 44),
         width: double.infinity,
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0xffe8dbf9)),
-          color: isSelected?Colors.yellow:Color(0xffffffff),
+          border: Border.all(color: isSelected?Color(0xff6d30bc):Color(0xffe8dbf9),width: 2),
+          color: isSelected?Color(0xff6d30bc).withOpacity(0.1):Color(0xffffffff),
           borderRadius: BorderRadius.circular(5),
         ),
         child: Text(answer.answerText,

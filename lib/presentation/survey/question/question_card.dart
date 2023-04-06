@@ -89,11 +89,13 @@ class _QuestionCardState extends State<QuestionCard> {
               if (isLastQuestion) {
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) => const ResultScreen(),));
+              }else{
+                setState(() {
+                  selectedAnswer = null ;
+                  currentQuestionIndex++;
+                });
               }
-              setState(() {
-                selectedAnswer = null ;
-                currentQuestionIndex++;
-              });
+
             },
             isLastQuestion:isLastQuestion ,
           );
