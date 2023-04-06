@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:survey/domain/survey/question/survey_question.dart';
 import 'package:survey/presentation/survey/result_screen.dart';
 import 'package:survey/presentation/survey/widgets/answer_option.dart';
+import 'package:survey/presentation/survey/widgets/next_button.dart';
 
 class QuestionCard extends StatefulWidget {
   const QuestionCard({Key? key}) : super(key: key);
@@ -23,7 +24,8 @@ class _QuestionCardState extends State<QuestionCard> {
       children: [
         Container(
           margin: EdgeInsets.fromLTRB(0, 0, 160, 21),
-          child: Text('Q${currentQuestionIndex + 1}',
+          child: Text(
+            'Q${currentQuestionIndex + 1}',
             style: TextStyle(
               fontSize: 36,
               fontWeight: FontWeight.w400,
@@ -47,54 +49,43 @@ class _QuestionCardState extends State<QuestionCard> {
             ),
           ),
         ),
-        ListView.builder(physics:const NeverScrollableScrollPhysics(),itemCount: questionList[currentQuestionIndex].answerList.length,shrinkWrap:true,itemBuilder: (context,index){
-          final answer=questionList[currentQuestionIndex].answerList[index];
-          return AnswerOption(answer: answer,isSelected: answer==selectedAnswer,onTap: (){
-            if (answer.isCorrect) {
-              score++;
-            }
-            setState(() {
-              selectedAnswer = answer;
-            });
-          },);
-    }),
-        _nextButton(),
+        ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: questionList[currentQuestionIndex].answerList.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              final answer =
+                  questionList[currentQuestionIndex].answerList[index];
+              return AnswerOption(
+                answer: answer,
+                isSelected: answer == selectedAnswer,
+                onTap: () {
+                  if (answer.isCorrect) {
+                    score++;
+                  }
+                  setState(() {
+                    selectedAnswer = answer;
+                  });
+                },
+              );
+            }),
+        () {
+        final isLastQuestion=currentQuestionIndex == questionList.length - 1;
+          return NextButton(
+            onTap: () {
+              if (isLastQuestion) {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => const ResultScreen(),));
+              }
+              setState(() {
+                selectedAnswer = null ;
+                currentQuestionIndex++;
+              });
+            },
+            isLastQuestion:isLastQuestion ,
+          );
+        }()
       ],
     );
   }
-
-
-
-
-
-  _nextButton() {
-    bool isLastQuestion = false;
-    if (currentQuestionIndex == questionList.length - 1) {
-      isLastQuestion = true;
-    }
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.5,
-      height: 48,
-      child: ElevatedButton(
-        child: Text(isLastQuestion ? "Submit" : "Next"),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Color(0xff9e71e7),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50)
-          )
-        ),
-        onPressed: () {
-          if (isLastQuestion) {
-            Navigator.push(context, MaterialPageRoute(
-                builder: (context) => ResultScreen(),));
-          }
-            setState(() {
-              selectedAnswer = null ;
-              currentQuestionIndex++;
-            });
-          }
-      ),
-    );
-  }
 }
-
