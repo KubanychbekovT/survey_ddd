@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:survey/domain/survey/question/survey_question.dart';
 import 'package:survey/presentation/survey/result_screen.dart';
+import 'package:survey/presentation/survey/widgets/answer_option.dart';
 
 class QuestionCard extends StatefulWidget {
   const QuestionCard({Key? key}) : super(key: key);
@@ -46,55 +47,25 @@ class _QuestionCardState extends State<QuestionCard> {
             ),
           ),
         ),
-        _answerList(),
+        ListView.builder(physics:const NeverScrollableScrollPhysics(),itemCount: questionList[currentQuestionIndex].answerList.length,shrinkWrap:true,itemBuilder: (context,index){
+          final answer=questionList[currentQuestionIndex].answerList[index];
+          return AnswerOption(answer: answer,isSelected: answer==selectedAnswer,onTap: (){
+            if (answer.isCorrect) {
+              score++;
+            }
+            setState(() {
+              selectedAnswer = answer;
+            });
+          },);
+    }),
         _nextButton(),
       ],
     );
   }
 
-  _answerList() {
-    return Column(
-      children: questionList[currentQuestionIndex]
-          .answerList
-          .map((e) => _answerButton(e),
-      )
-            .toList(),
-    );
-  }
 
-  Widget _answerButton(Answer answer) {
-    bool isSelected = answer == selectedAnswer;
-    return InkWell(
-      onTap: () {
-          if (answer.isCorrect) {
-            score++;
-          }
-          setState(() {
-            selectedAnswer = answer;
-          });
-        print("tapped");
-      },
-      highlightColor: Colors.transparent, // set the highlight color
-      splashColor: Color(0xff6d30bc),
-      child: Container(
-        margin: EdgeInsets.fromLTRB(0, 0, 0, 32),
-        padding: EdgeInsets.fromLTRB(31, 31, 31, 44),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          border: Border.all(color: Color(0xffe8dbf9)),
-         color: isSelected?Colors.yellow:Color(0xffffffff),
-          borderRadius: BorderRadius.circular(5),
-        ),
-        child: Text(answer.answerText,
-        style: TextStyle(
-          fontSize: 17,
-          fontWeight: FontWeight.w400,
-          height: 1.2575,
-          color: Color(0xff6d30bc),
-        ),),
-      ),
-    );
-  }
+
+
 
   _nextButton() {
     bool isLastQuestion = false;
