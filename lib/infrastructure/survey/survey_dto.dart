@@ -9,15 +9,13 @@ part 'survey_dto.g.dart';
 @freezed
 abstract class SurveyDto implements _$SurveyDto {
   SurveyDto._();
-
-  const factory SurveyDTO({
+   factory SurveyDto({
     required String name,
     required String date,
     required List<QuestionDTO> surveyQuestions,
   }) = _SurveyDTO;
-
-  factory SurveyDTO.fromDomain(Survey survey) {
-    return SurveyDTO(
+  factory SurveyDto.fromDomain(Survey survey) {
+    return SurveyDto(
       name: survey.name.getOrCrash(),
       date: survey.date.toIso8601String(),
       surveyQuestions: survey.surveyQuestions.getOrCrash()
@@ -25,12 +23,12 @@ abstract class SurveyDto implements _$SurveyDto {
     );
   }
 
-  factory SurveyDTO.fromJson(Map<String, dynamic> json) =>
-      _$SurveyDTOFromJson(json);
+  factory SurveyDto.fromJson(Map<String, dynamic> json) =>
+      _$SurveyDtoFromJson(json);
 }
 @freezed
 class QuestionDTO with _$QuestionDTO {
-  const factory QuestionDTO({
+   factory QuestionDTO({
     required String name,
     required List<String> options,
   }) = _QuestionDTO;

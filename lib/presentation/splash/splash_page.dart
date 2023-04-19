@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:survey/application/auth/auth_bloc.dart';
 import 'package:survey/domain/survey/question.dart';
 import 'package:survey/domain/survey/survey.dart';
 import 'package:survey/domain/survey/value_objects.dart';
+import 'package:survey/infrastructure/core/firestore_helpers.dart';
 import 'package:survey/presentation/sign_in/sign_in_page.dart';
 import 'package:survey/presentation/survey/survey_overview_page.dart';
 import 'package:survey/presentation/survey/survey_page.dart';
@@ -47,7 +49,7 @@ class SplashPage extends StatelessWidget {
                               ]),
                               name: SurveyName("Tolerancy"),
                               date: DateTime.now(),
-                              reference: null))));
+                              reference: FirebaseFirestore.instance.dummyRef))));
 
             }, loading: (value) {  });
       },

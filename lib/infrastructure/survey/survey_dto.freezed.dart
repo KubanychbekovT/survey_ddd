@@ -117,7 +117,7 @@ class __$$_SurveyDTOCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SurveyDTO extends _SurveyDTO {
-  const _$_SurveyDTO(
+  _$_SurveyDTO(
       {required this.name,
       required this.date,
       required final List<QuestionDTO> surveyQuestions})
@@ -175,11 +175,11 @@ class _$_SurveyDTO extends _SurveyDTO {
 }
 
 abstract class _SurveyDTO extends SurveyDto {
-  const factory _SurveyDTO(
+  factory _SurveyDTO(
       {required final String name,
       required final String date,
       required final List<QuestionDTO> surveyQuestions}) = _$_SurveyDTO;
-  const _SurveyDTO._() : super._();
+  _SurveyDTO._() : super._();
 
   factory _SurveyDTO.fromJson(Map<String, dynamic> json) =
       _$_SurveyDTO.fromJson;
@@ -290,8 +290,7 @@ class __$$_QuestionDTOCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_QuestionDTO implements _QuestionDTO {
-  const _$_QuestionDTO(
-      {required this.name, required final List<String> options})
+  _$_QuestionDTO({required this.name, required final List<String> options})
       : _options = options;
 
   factory _$_QuestionDTO.fromJson(Map<String, dynamic> json) =>
@@ -341,7 +340,7 @@ class _$_QuestionDTO implements _QuestionDTO {
 }
 
 abstract class _QuestionDTO implements QuestionDTO {
-  const factory _QuestionDTO(
+  factory _QuestionDTO(
       {required final String name,
       required final List<String> options}) = _$_QuestionDTO;
 

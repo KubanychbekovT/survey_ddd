@@ -19,6 +19,8 @@ mixin _$Survey {
   SurveyName get name => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   SurveyQuestions get surveyQuestions => throw _privateConstructorUsedError;
+  DocumentReference<Object?> get reference =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SurveyCopyWith<Survey> get copyWith => throw _privateConstructorUsedError;
@@ -29,7 +31,11 @@ abstract class $SurveyCopyWith<$Res> {
   factory $SurveyCopyWith(Survey value, $Res Function(Survey) then) =
       _$SurveyCopyWithImpl<$Res, Survey>;
   @useResult
-  $Res call({SurveyName name, DateTime date, SurveyQuestions surveyQuestions});
+  $Res call(
+      {SurveyName name,
+      DateTime date,
+      SurveyQuestions surveyQuestions,
+      DocumentReference<Object?> reference});
 }
 
 /// @nodoc
@@ -48,6 +54,7 @@ class _$SurveyCopyWithImpl<$Res, $Val extends Survey>
     Object? name = null,
     Object? date = null,
     Object? surveyQuestions = null,
+    Object? reference = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -62,6 +69,10 @@ class _$SurveyCopyWithImpl<$Res, $Val extends Survey>
           ? _value.surveyQuestions
           : surveyQuestions // ignore: cast_nullable_to_non_nullable
               as SurveyQuestions,
+      reference: null == reference
+          ? _value.reference
+          : reference // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>,
     ) as $Val);
   }
 }
@@ -72,7 +83,11 @@ abstract class _$$_SurveyCopyWith<$Res> implements $SurveyCopyWith<$Res> {
       __$$_SurveyCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SurveyName name, DateTime date, SurveyQuestions surveyQuestions});
+  $Res call(
+      {SurveyName name,
+      DateTime date,
+      SurveyQuestions surveyQuestions,
+      DocumentReference<Object?> reference});
 }
 
 /// @nodoc
@@ -88,6 +103,7 @@ class __$$_SurveyCopyWithImpl<$Res>
     Object? name = null,
     Object? date = null,
     Object? surveyQuestions = null,
+    Object? reference = null,
   }) {
     return _then(_$_Survey(
       name: null == name
@@ -102,6 +118,10 @@ class __$$_SurveyCopyWithImpl<$Res>
           ? _value.surveyQuestions
           : surveyQuestions // ignore: cast_nullable_to_non_nullable
               as SurveyQuestions,
+      reference: null == reference
+          ? _value.reference
+          : reference // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>,
     ));
   }
 }
@@ -110,7 +130,10 @@ class __$$_SurveyCopyWithImpl<$Res>
 
 class _$_Survey implements _Survey {
   const _$_Survey(
-      {required this.name, required this.date, required this.surveyQuestions});
+      {required this.name,
+      required this.date,
+      required this.surveyQuestions,
+      required this.reference});
 
   @override
   final SurveyName name;
@@ -118,10 +141,12 @@ class _$_Survey implements _Survey {
   final DateTime date;
   @override
   final SurveyQuestions surveyQuestions;
+  @override
+  final DocumentReference<Object?> reference;
 
   @override
   String toString() {
-    return 'Survey(name: $name, date: $date, surveyQuestions: $surveyQuestions)';
+    return 'Survey(name: $name, date: $date, surveyQuestions: $surveyQuestions, reference: $reference)';
   }
 
   @override
@@ -132,11 +157,14 @@ class _$_Survey implements _Survey {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.surveyQuestions, surveyQuestions) ||
-                other.surveyQuestions == surveyQuestions));
+                other.surveyQuestions == surveyQuestions) &&
+            (identical(other.reference, reference) ||
+                other.reference == reference));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, date, surveyQuestions);
+  int get hashCode =>
+      Object.hash(runtimeType, name, date, surveyQuestions, reference);
 
   @JsonKey(ignore: true)
   @override
@@ -149,7 +177,8 @@ abstract class _Survey implements Survey {
   const factory _Survey(
       {required final SurveyName name,
       required final DateTime date,
-      required final SurveyQuestions surveyQuestions}) = _$_Survey;
+      required final SurveyQuestions surveyQuestions,
+      required final DocumentReference<Object?> reference}) = _$_Survey;
 
   @override
   SurveyName get name;
@@ -157,6 +186,8 @@ abstract class _Survey implements Survey {
   DateTime get date;
   @override
   SurveyQuestions get surveyQuestions;
+  @override
+  DocumentReference<Object?> get reference;
   @override
   @JsonKey(ignore: true)
   _$$_SurveyCopyWith<_$_Survey> get copyWith =>
