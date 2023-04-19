@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:survey/domain/survey/question/survey_question.dart';
+import 'package:survey/domain/survey/question.dart';
 
 class AnswerOption extends StatelessWidget {
-  const AnswerOption({Key? key, required this.isSelected, required this.answer, required this.onTap}) : super(key: key);
+  const AnswerOption({Key? key, required this.isSelected,required this.onTap, required this.question, required this.index}) : super(key: key);
   final bool isSelected;
-  final Answer answer;
+  final Question question;
+  final int index;
   final Function onTap;
   @override
   Widget build(BuildContext context) {
+    final answer=question.options.getOrCrash()[index];
     return InkWell(
       onTap: () {
        onTap();
@@ -24,7 +26,7 @@ class AnswerOption extends StatelessWidget {
           color: isSelected?Color(0xff6d30bc).withOpacity(0.1):Color(0xffffffff),
           borderRadius: BorderRadius.circular(5),
         ),
-        child: Text(answer.answerText,
+        child: Text(answer.getOrCrash(),
           style: const TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w400,
