@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:survey/infrastructure/survey/survey_dto.dart';
+
 //
 // extension FireStoreX on FirebaseFirestore{
 //   Future<DocumentReference> userDocument()async{
@@ -8,10 +10,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 //     return FirebaseFirestore.instance.collection("users").doc(user.id.getOrCrash());
 //   }
 // }
-extension FireStoreX on FirebaseFirestore{
-  CollectionReference get projectCollection => collection("projects");
+extension FireStoreX on FirebaseFirestore {
+  CollectionReference get surveyCollection => collection("surveys");
+
   CollectionReference get userCollection => collection("users");
-  CollectionReference get chatCollection => collection("chats");
+
   DocumentReference get dummyRef => doc("test/test");
 }
 
@@ -39,4 +42,19 @@ class ServerTimestampConverter implements JsonConverter<Timestamp, Timestamp> {
 
   @override
   Timestamp toJson(Timestamp date) => date;
+}
+
+class QuestionDtoConverter
+    implements JsonConverter<QuestionDTO, Map<String, dynamic>> {
+  const QuestionDtoConverter();
+
+  @override
+  QuestionDTO fromJson(Map<String, dynamic> json) {
+    return QuestionDTO.fromJson(json);
+  }
+
+  @override
+  Map<String, dynamic> toJson(QuestionDTO questionDto) {
+    return questionDto.toJson();
+  }
 }

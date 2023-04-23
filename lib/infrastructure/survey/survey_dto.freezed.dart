@@ -21,8 +21,16 @@ SurveyDto _$SurveyDtoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SurveyDto {
   String get name => throw _privateConstructorUsedError;
-  String get date => throw _privateConstructorUsedError;
+  @ServerTimestampConverter()
+  Timestamp get date => throw _privateConstructorUsedError;
+  @QuestionDtoConverter()
   List<QuestionDTO> get surveyQuestions => throw _privateConstructorUsedError;
+  @DocumentReferenceConverter()
+  DocumentReference<Object?> get owner => throw _privateConstructorUsedError;
+  @DocumentReferenceConverter()
+  @JsonKey(ignore: true)
+  DocumentReference<Object?>? get reference =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +43,17 @@ abstract class $SurveyDtoCopyWith<$Res> {
   factory $SurveyDtoCopyWith(SurveyDto value, $Res Function(SurveyDto) then) =
       _$SurveyDtoCopyWithImpl<$Res, SurveyDto>;
   @useResult
-  $Res call({String name, String date, List<QuestionDTO> surveyQuestions});
+  $Res call(
+      {String name,
+      @ServerTimestampConverter()
+          Timestamp date,
+      @QuestionDtoConverter()
+          List<QuestionDTO> surveyQuestions,
+      @DocumentReferenceConverter()
+          DocumentReference<Object?> owner,
+      @DocumentReferenceConverter()
+      @JsonKey(ignore: true)
+          DocumentReference<Object?>? reference});
 }
 
 /// @nodoc
@@ -54,6 +72,8 @@ class _$SurveyDtoCopyWithImpl<$Res, $Val extends SurveyDto>
     Object? name = null,
     Object? date = null,
     Object? surveyQuestions = null,
+    Object? owner = null,
+    Object? reference = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -63,11 +83,19 @@ class _$SurveyDtoCopyWithImpl<$Res, $Val extends SurveyDto>
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Timestamp,
       surveyQuestions: null == surveyQuestions
           ? _value.surveyQuestions
           : surveyQuestions // ignore: cast_nullable_to_non_nullable
               as List<QuestionDTO>,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>,
+      reference: freezed == reference
+          ? _value.reference
+          : reference // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>?,
     ) as $Val);
   }
 }
@@ -79,7 +107,17 @@ abstract class _$$_SurveyDTOCopyWith<$Res> implements $SurveyDtoCopyWith<$Res> {
       __$$_SurveyDTOCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String date, List<QuestionDTO> surveyQuestions});
+  $Res call(
+      {String name,
+      @ServerTimestampConverter()
+          Timestamp date,
+      @QuestionDtoConverter()
+          List<QuestionDTO> surveyQuestions,
+      @DocumentReferenceConverter()
+          DocumentReference<Object?> owner,
+      @DocumentReferenceConverter()
+      @JsonKey(ignore: true)
+          DocumentReference<Object?>? reference});
 }
 
 /// @nodoc
@@ -96,6 +134,8 @@ class __$$_SurveyDTOCopyWithImpl<$Res>
     Object? name = null,
     Object? date = null,
     Object? surveyQuestions = null,
+    Object? owner = null,
+    Object? reference = freezed,
   }) {
     return _then(_$_SurveyDTO(
       name: null == name
@@ -105,11 +145,19 @@ class __$$_SurveyDTOCopyWithImpl<$Res>
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Timestamp,
       surveyQuestions: null == surveyQuestions
           ? _value._surveyQuestions
           : surveyQuestions // ignore: cast_nullable_to_non_nullable
               as List<QuestionDTO>,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>,
+      reference: freezed == reference
+          ? _value.reference
+          : reference // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>?,
     ));
   }
 }
@@ -119,8 +167,10 @@ class __$$_SurveyDTOCopyWithImpl<$Res>
 class _$_SurveyDTO extends _SurveyDTO {
   _$_SurveyDTO(
       {required this.name,
-      required this.date,
-      required final List<QuestionDTO> surveyQuestions})
+      @ServerTimestampConverter() required this.date,
+      @QuestionDtoConverter() required final List<QuestionDTO> surveyQuestions,
+      @DocumentReferenceConverter() required this.owner,
+      @DocumentReferenceConverter() @JsonKey(ignore: true) this.reference})
       : _surveyQuestions = surveyQuestions,
         super._();
 
@@ -130,9 +180,11 @@ class _$_SurveyDTO extends _SurveyDTO {
   @override
   final String name;
   @override
-  final String date;
+  @ServerTimestampConverter()
+  final Timestamp date;
   final List<QuestionDTO> _surveyQuestions;
   @override
+  @QuestionDtoConverter()
   List<QuestionDTO> get surveyQuestions {
     if (_surveyQuestions is EqualUnmodifiableListView) return _surveyQuestions;
     // ignore: implicit_dynamic_type
@@ -140,8 +192,16 @@ class _$_SurveyDTO extends _SurveyDTO {
   }
 
   @override
+  @DocumentReferenceConverter()
+  final DocumentReference<Object?> owner;
+  @override
+  @DocumentReferenceConverter()
+  @JsonKey(ignore: true)
+  final DocumentReference<Object?>? reference;
+
+  @override
   String toString() {
-    return 'SurveyDto(name: $name, date: $date, surveyQuestions: $surveyQuestions)';
+    return 'SurveyDto(name: $name, date: $date, surveyQuestions: $surveyQuestions, owner: $owner, reference: $reference)';
   }
 
   @override
@@ -152,13 +212,16 @@ class _$_SurveyDTO extends _SurveyDTO {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.date, date) || other.date == date) &&
             const DeepCollectionEquality()
-                .equals(other._surveyQuestions, _surveyQuestions));
+                .equals(other._surveyQuestions, _surveyQuestions) &&
+            (identical(other.owner, owner) || other.owner == owner) &&
+            (identical(other.reference, reference) ||
+                other.reference == reference));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, date,
-      const DeepCollectionEquality().hash(_surveyQuestions));
+      const DeepCollectionEquality().hash(_surveyQuestions), owner, reference);
 
   @JsonKey(ignore: true)
   @override
@@ -177,8 +240,15 @@ class _$_SurveyDTO extends _SurveyDTO {
 abstract class _SurveyDTO extends SurveyDto {
   factory _SurveyDTO(
       {required final String name,
-      required final String date,
-      required final List<QuestionDTO> surveyQuestions}) = _$_SurveyDTO;
+      @ServerTimestampConverter()
+          required final Timestamp date,
+      @QuestionDtoConverter()
+          required final List<QuestionDTO> surveyQuestions,
+      @DocumentReferenceConverter()
+          required final DocumentReference<Object?> owner,
+      @DocumentReferenceConverter()
+      @JsonKey(ignore: true)
+          final DocumentReference<Object?>? reference}) = _$_SurveyDTO;
   _SurveyDTO._() : super._();
 
   factory _SurveyDTO.fromJson(Map<String, dynamic> json) =
@@ -187,9 +257,18 @@ abstract class _SurveyDTO extends SurveyDto {
   @override
   String get name;
   @override
-  String get date;
+  @ServerTimestampConverter()
+  Timestamp get date;
   @override
+  @QuestionDtoConverter()
   List<QuestionDTO> get surveyQuestions;
+  @override
+  @DocumentReferenceConverter()
+  DocumentReference<Object?> get owner;
+  @override
+  @DocumentReferenceConverter()
+  @JsonKey(ignore: true)
+  DocumentReference<Object?>? get reference;
   @override
   @JsonKey(ignore: true)
   _$$_SurveyDTOCopyWith<_$_SurveyDTO> get copyWith =>
@@ -289,9 +368,10 @@ class __$$_QuestionDTOCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_QuestionDTO implements _QuestionDTO {
+class _$_QuestionDTO extends _QuestionDTO {
   _$_QuestionDTO({required this.name, required final List<String> options})
-      : _options = options;
+      : _options = options,
+        super._();
 
   factory _$_QuestionDTO.fromJson(Map<String, dynamic> json) =>
       _$$_QuestionDTOFromJson(json);
@@ -339,10 +419,11 @@ class _$_QuestionDTO implements _QuestionDTO {
   }
 }
 
-abstract class _QuestionDTO implements QuestionDTO {
+abstract class _QuestionDTO extends QuestionDTO {
   factory _QuestionDTO(
       {required final String name,
       required final List<String> options}) = _$_QuestionDTO;
+  _QuestionDTO._() : super._();
 
   factory _QuestionDTO.fromJson(Map<String, dynamic> json) =
       _$_QuestionDTO.fromJson;

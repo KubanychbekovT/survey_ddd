@@ -6,7 +6,7 @@ import 'package:survey/domain/users/user.dart';
 
 abstract class ISurveyRepository {
   Stream<Either<FirebaseFirestoreFailure, List<Survey>>> watchAllSurveys();
-  Future<Either<FirebaseFirestoreFailure, List<Survey>>> getUserSurveys(User user);
+  Future<Either<FirebaseFirestoreFailure, List<Survey>>> getUserSurveys(DocumentReference documentReference);
   Future<Either<FirebaseFirestoreFailure, Unit>> createSurvey(Survey survey, {String? documentId});
   Future<Either<FirebaseFirestoreFailure, Unit>> updateSurvey(Survey survey);
   Future<Either<FirebaseFirestoreFailure, Unit>> deleteSurvey(Survey survey);

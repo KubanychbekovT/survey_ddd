@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:survey/domain/survey/question.dart';
 import 'package:survey/domain/survey/value_objects.dart';
+import 'package:survey/domain/users/user.dart';
 import 'package:survey/infrastructure/core/firestore_helpers.dart';
 
 part 'survey.freezed.dart';
@@ -13,6 +14,7 @@ class Survey with _$Survey {
     required DateTime date,
     required SurveyQuestions surveyQuestions,
     required DocumentReference reference,
+    required DocumentReference owner
   }) = _Survey;
   factory Survey.empty() {
     final dummyRef=FirebaseFirestore.instance.dummyRef;
@@ -21,6 +23,7 @@ class Survey with _$Survey {
         date: DateTime.now(),
       surveyQuestions: SurveyQuestions(const []),
         reference: dummyRef,
+        owner: dummyRef,
     );
   }
 }

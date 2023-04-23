@@ -47,29 +47,29 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCrwvpxCo1djHghfOSxE11ss9Sn8NG9jjE',
-    appId: '1:662064967478:web:81c127461c9232e7510d97',
-    messagingSenderId: '662064967478',
-    projectId: 'survey-566ad',
-    authDomain: 'survey-566ad.firebaseapp.com',
-    storageBucket: 'survey-566ad.appspot.com',
+    apiKey: 'AIzaSyBtTfbOnKGoAFTWQ7p1rpa8YIKMkabvuDI',
+    appId: '1:552768874130:web:906b261852c1288043284b',
+    messagingSenderId: '552768874130',
+    projectId: 'survey-7e186',
+    authDomain: 'survey-7e186.firebaseapp.com',
+    storageBucket: 'survey-7e186.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCuLN7u3MC2xS4d_PQestYKCmIbmJ6zprU',
-    appId: '1:662064967478:android:d0ab9419654b6618510d97',
-    messagingSenderId: '662064967478',
-    projectId: 'survey-566ad',
-    storageBucket: 'survey-566ad.appspot.com',
+    apiKey: 'AIzaSyCv82ETHjyP9Z0pgnbVREFrhTTGK6I-ZQY',
+    appId: '1:552768874130:android:4ead92c2b2f45adf43284b',
+    messagingSenderId: '552768874130',
+    projectId: 'survey-7e186',
+    storageBucket: 'survey-7e186.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCk0oum8AlmZSjJqnjwTostSopYTKrxh_4',
-    appId: '1:662064967478:ios:8faad1d3087558e4510d97',
-    messagingSenderId: '662064967478',
-    projectId: 'survey-566ad',
-    storageBucket: 'survey-566ad.appspot.com',
-    iosClientId: '662064967478-s06mt96b98rqu17rfub887adkqukaf0q.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBnUHTH9musTvVAAz5udZNz3SihGREAND0',
+    appId: '1:552768874130:ios:cddc4ff31795491b43284b',
+    messagingSenderId: '552768874130',
+    projectId: 'survey-7e186',
+    storageBucket: 'survey-7e186.appspot.com',
+    iosClientId: '552768874130-55q5g3q16otohiu619q395ji9chjgem1.apps.googleusercontent.com',
     iosBundleId: 'com.example.survey',
   );
 }

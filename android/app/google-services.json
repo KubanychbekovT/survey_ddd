@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "662064967478",
-    "project_id": "survey-566ad",
-    "storage_bucket": "survey-566ad.appspot.com"
+    "project_number": "552768874130",
+    "project_id": "survey-7e186",
+    "storage_bucket": "survey-7e186.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:662064967478:android:d0ab9419654b6618510d97",
+        "mobilesdk_app_id": "1:552768874130:android:4ead92c2b2f45adf43284b",
         "android_client_info": {
           "package_name": "com.example.survey"
         }
       },
       "oauth_client": [
         {
-          "client_id": "662064967478-kbgfgi9qq075df7cjrvn4cov1ra0p7rc.apps.googleusercontent.com",
+          "client_id": "552768874130-poe297m6aqc0jb9uchvbgpk80tb3nb0o.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCuLN7u3MC2xS4d_PQestYKCmIbmJ6zprU"
+          "current_key": "AIzaSyCv82ETHjyP9Z0pgnbVREFrhTTGK6I-ZQY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "662064967478-kbgfgi9qq075df7cjrvn4cov1ra0p7rc.apps.googleusercontent.com",
+              "client_id": "552768874130-poe297m6aqc0jb9uchvbgpk80tb3nb0o.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

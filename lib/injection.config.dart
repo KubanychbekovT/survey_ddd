@@ -16,19 +16,21 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i7;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:http/http.dart' as _i3;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:shared_preferences/shared_preferences.dart' as _i13;
-import 'package:survey/application/auth/auth_bloc.dart' as _i16;
+import 'package:shared_preferences/shared_preferences.dart' as _i15;
+import 'package:survey/application/auth/auth_bloc.dart' as _i18;
 import 'package:survey/application/auth/profile_watcher/profile_watcher_cubit.dart'
-    as _i12;
-import 'package:survey/application/auth/sign_in_form/sign_in_form_bloc.dart'
     as _i14;
+import 'package:survey/application/auth/sign_in_form/sign_in_form_bloc.dart'
+    as _i16;
 import 'package:survey/application/auth/sign_up_form/sign_up_form_bloc.dart'
-    as _i15;
+    as _i17;
 import 'package:survey/domain/auth/i_auth_facade.dart' as _i8;
-import 'package:survey/domain/users/i_user_repository.dart' as _i10;
+import 'package:survey/domain/survey/i_survey_repository.dart' as _i10;
+import 'package:survey/domain/users/i_user_repository.dart' as _i12;
 import 'package:survey/infrastructure/auth/firebase_auth_facade.dart' as _i9;
-import 'package:survey/infrastructure/core/app_injectable_module.dart' as _i17;
-import 'package:survey/infrastructure/users/user_repository.dart' as _i11;
+import 'package:survey/infrastructure/core/app_injectable_module.dart' as _i19;
+import 'package:survey/infrastructure/survey/survey_repository.dart' as _i11;
+import 'package:survey/infrastructure/users/user_repository.dart' as _i13;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -55,23 +57,27 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i4.FirebaseAuth>(),
           gh<_i5.FirebaseFirestore>(),
         ));
-    gh.lazySingleton<_i10.IUserRepository>(() => _i11.UserRepository(
+    gh.lazySingleton<_i10.ISurveyRepository>(() => _i11.SurveyRepository(
+          gh<_i5.FirebaseFirestore>(),
+          gh<_i8.IAuthFacade>(),
+        ));
+    gh.lazySingleton<_i12.IUserRepository>(() => _i13.UserRepository(
           gh<_i5.FirebaseFirestore>(),
           gh<_i4.FirebaseAuth>(),
         ));
-    gh.factory<_i12.ProfileWatcherCubit>(
-        () => _i12.ProfileWatcherCubit(gh<_i8.IAuthFacade>()));
-    await gh.factoryAsync<_i13.SharedPreferences>(
+    gh.factory<_i14.ProfileWatcherCubit>(
+        () => _i14.ProfileWatcherCubit(gh<_i8.IAuthFacade>()));
+    await gh.factoryAsync<_i15.SharedPreferences>(
       () => appInjectableProdModule.sharedPreferences,
       preResolve: true,
     );
-    gh.factory<_i14.SignInFormBloc>(
-        () => _i14.SignInFormBloc(gh<_i8.IAuthFacade>()));
-    gh.factory<_i15.SignUpFormBloc>(
-        () => _i15.SignUpFormBloc(gh<_i8.IAuthFacade>()));
-    gh.factory<_i16.AuthBloc>(() => _i16.AuthBloc(gh<_i8.IAuthFacade>()));
+    gh.factory<_i16.SignInFormBloc>(
+        () => _i16.SignInFormBloc(gh<_i8.IAuthFacade>()));
+    gh.factory<_i17.SignUpFormBloc>(
+        () => _i17.SignUpFormBloc(gh<_i8.IAuthFacade>()));
+    gh.factory<_i18.AuthBloc>(() => _i18.AuthBloc(gh<_i8.IAuthFacade>()));
     return this;
   }
 }
 
-class _$AppInjectableProdModule extends _i17.AppInjectableProdModule {}
+class _$AppInjectableProdModule extends _i19.AppInjectableProdModule {}

@@ -49,7 +49,7 @@ class SplashPage extends StatelessWidget {
                               ]),
                               name: SurveyName("Tolerancy"),
                               date: DateTime.now(),
-                              reference: FirebaseFirestore.instance.dummyRef))));
+                              reference: FirebaseFirestore.instance.dummyRef, owner: FirebaseFirestore.instance.dummyRef))));
 
             }, loading: (value) {  });
       },

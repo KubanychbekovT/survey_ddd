@@ -21,6 +21,7 @@ mixin _$Survey {
   SurveyQuestions get surveyQuestions => throw _privateConstructorUsedError;
   DocumentReference<Object?> get reference =>
       throw _privateConstructorUsedError;
+  DocumentReference<Object?> get owner => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SurveyCopyWith<Survey> get copyWith => throw _privateConstructorUsedError;
@@ -35,7 +36,8 @@ abstract class $SurveyCopyWith<$Res> {
       {SurveyName name,
       DateTime date,
       SurveyQuestions surveyQuestions,
-      DocumentReference<Object?> reference});
+      DocumentReference<Object?> reference,
+      DocumentReference<Object?> owner});
 }
 
 /// @nodoc
@@ -55,6 +57,7 @@ class _$SurveyCopyWithImpl<$Res, $Val extends Survey>
     Object? date = null,
     Object? surveyQuestions = null,
     Object? reference = null,
+    Object? owner = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -73,6 +76,10 @@ class _$SurveyCopyWithImpl<$Res, $Val extends Survey>
           ? _value.reference
           : reference // ignore: cast_nullable_to_non_nullable
               as DocumentReference<Object?>,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>,
     ) as $Val);
   }
 }
@@ -87,7 +94,8 @@ abstract class _$$_SurveyCopyWith<$Res> implements $SurveyCopyWith<$Res> {
       {SurveyName name,
       DateTime date,
       SurveyQuestions surveyQuestions,
-      DocumentReference<Object?> reference});
+      DocumentReference<Object?> reference,
+      DocumentReference<Object?> owner});
 }
 
 /// @nodoc
@@ -104,6 +112,7 @@ class __$$_SurveyCopyWithImpl<$Res>
     Object? date = null,
     Object? surveyQuestions = null,
     Object? reference = null,
+    Object? owner = null,
   }) {
     return _then(_$_Survey(
       name: null == name
@@ -122,6 +131,10 @@ class __$$_SurveyCopyWithImpl<$Res>
           ? _value.reference
           : reference // ignore: cast_nullable_to_non_nullable
               as DocumentReference<Object?>,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>,
     ));
   }
 }
@@ -133,7 +146,8 @@ class _$_Survey implements _Survey {
       {required this.name,
       required this.date,
       required this.surveyQuestions,
-      required this.reference});
+      required this.reference,
+      required this.owner});
 
   @override
   final SurveyName name;
@@ -143,10 +157,12 @@ class _$_Survey implements _Survey {
   final SurveyQuestions surveyQuestions;
   @override
   final DocumentReference<Object?> reference;
+  @override
+  final DocumentReference<Object?> owner;
 
   @override
   String toString() {
-    return 'Survey(name: $name, date: $date, surveyQuestions: $surveyQuestions, reference: $reference)';
+    return 'Survey(name: $name, date: $date, surveyQuestions: $surveyQuestions, reference: $reference, owner: $owner)';
   }
 
   @override
@@ -159,12 +175,13 @@ class _$_Survey implements _Survey {
             (identical(other.surveyQuestions, surveyQuestions) ||
                 other.surveyQuestions == surveyQuestions) &&
             (identical(other.reference, reference) ||
-                other.reference == reference));
+                other.reference == reference) &&
+            (identical(other.owner, owner) || other.owner == owner));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, name, date, surveyQuestions, reference);
+      Object.hash(runtimeType, name, date, surveyQuestions, reference, owner);
 
   @JsonKey(ignore: true)
   @override
@@ -178,7 +195,8 @@ abstract class _Survey implements Survey {
       {required final SurveyName name,
       required final DateTime date,
       required final SurveyQuestions surveyQuestions,
-      required final DocumentReference<Object?> reference}) = _$_Survey;
+      required final DocumentReference<Object?> reference,
+      required final DocumentReference<Object?> owner}) = _$_Survey;
 
   @override
   SurveyName get name;
@@ -188,6 +206,8 @@ abstract class _Survey implements Survey {
   SurveyQuestions get surveyQuestions;
   @override
   DocumentReference<Object?> get reference;
+  @override
+  DocumentReference<Object?> get owner;
   @override
   @JsonKey(ignore: true)
   _$$_SurveyCopyWith<_$_Survey> get copyWith =>
