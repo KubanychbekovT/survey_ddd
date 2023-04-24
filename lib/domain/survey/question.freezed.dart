@@ -100,8 +100,8 @@ class __$$_QuestionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Question implements _Question {
-  const _$_Question({required this.name, required this.options});
+class _$_Question extends _Question {
+  const _$_Question({required this.name, required this.options}) : super._();
 
   @override
   final QuestionName name;
@@ -132,10 +132,11 @@ class _$_Question implements _Question {
       __$$_QuestionCopyWithImpl<_$_Question>(this, _$identity);
 }
 
-abstract class _Question implements Question {
+abstract class _Question extends Question {
   const factory _Question(
       {required final QuestionName name,
       required final QuestionOptions options}) = _$_Question;
+  const _Question._() : super._();
 
   @override
   QuestionName get name;

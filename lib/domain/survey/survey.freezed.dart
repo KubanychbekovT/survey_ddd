@@ -141,13 +141,14 @@ class __$$_SurveyCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Survey implements _Survey {
+class _$_Survey extends _Survey {
   const _$_Survey(
       {required this.name,
       required this.date,
       required this.surveyQuestions,
       required this.reference,
-      required this.owner});
+      required this.owner})
+      : super._();
 
   @override
   final SurveyName name;
@@ -190,13 +191,14 @@ class _$_Survey implements _Survey {
       __$$_SurveyCopyWithImpl<_$_Survey>(this, _$identity);
 }
 
-abstract class _Survey implements Survey {
+abstract class _Survey extends Survey {
   const factory _Survey(
       {required final SurveyName name,
       required final DateTime date,
       required final SurveyQuestions surveyQuestions,
       required final DocumentReference<Object?> reference,
       required final DocumentReference<Object?> owner}) = _$_Survey;
+  const _Survey._() : super._();
 
   @override
   SurveyName get name;
