@@ -22,34 +22,35 @@ class SplashPage extends StatelessWidget {
             unAuthenticated: (_) => Navigator.push(
                 context,MaterialPageRoute(builder: (context)=>SignInPage())),
             authenticated: (_) {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => SurveyPage(
-                          survey: Survey(
-                              surveyQuestions: SurveyQuestions([
-                                Question(
-                                    name: QuestionName(
-                                        "How do you relate to neo people"),
-                                    options: QuestionOptions([
-                                      QuestionOptionName(
-                                        "Good",
-                                      ),
-                                      QuestionOptionName("Bad")
-                                    ])),
-                                Question(
-                                    name: QuestionName(
-                                        "How do you relate to old people"),
-                                    options: QuestionOptions([
-                                      QuestionOptionName(
-                                        "Good",
-                                      ),
-                                      QuestionOptionName("Normal")
-                                    ])),
-                              ]),
-                              name: SurveyName("Tolerancy"),
-                              date: DateTime.now(),
-                              reference: FirebaseFirestore.instance.dummyRef, owner: FirebaseFirestore.instance.dummyRef))));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>SurveyOverviewPage()));
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //         builder: (context) => SurveyPage(
+              //             survey: Survey(
+              //                 surveyQuestions: SurveyQuestions([
+              //                   Question(
+              //                       name: QuestionName(
+              //                           "How do you relate to neo people"),
+              //                       options: QuestionOptions([
+              //                         QuestionOptionName(
+              //                           "Good",
+              //                         ),
+              //                         QuestionOptionName("Bad")
+              //                       ])),
+              //                   Question(
+              //                       name: QuestionName(
+              //                           "How do you relate to old people"),
+              //                       options: QuestionOptions([
+              //                         QuestionOptionName(
+              //                           "Good",
+              //                         ),
+              //                         QuestionOptionName("Normal")
+              //                       ])),
+              //                 ]),
+              //                 name: SurveyName("Tolerancy"),
+              //                 date: DateTime.now(),
+              //                 reference: FirebaseFirestore.instance.dummyRef, owner: FirebaseFirestore.instance.dummyRef))));
 
             }, loading: (value) {  });
       },

@@ -21,6 +21,9 @@ mixin _$SurveyActorState {
     required TResult Function() deleteSurveySuccess,
     required TResult Function(FirebaseFirestoreFailure failureException)
         deleteSurveyFailure,
+    required TResult Function() addSurveyResultSuccess,
+    required TResult Function(FirebaseFirestoreFailure failureException)
+        addSurveyResultFailure,
     required TResult Function() loadingProgressState,
     required TResult Function() initial,
   }) =>
@@ -30,6 +33,9 @@ mixin _$SurveyActorState {
     TResult? Function()? deleteSurveySuccess,
     TResult? Function(FirebaseFirestoreFailure failureException)?
         deleteSurveyFailure,
+    TResult? Function()? addSurveyResultSuccess,
+    TResult? Function(FirebaseFirestoreFailure failureException)?
+        addSurveyResultFailure,
     TResult? Function()? loadingProgressState,
     TResult? Function()? initial,
   }) =>
@@ -39,6 +45,9 @@ mixin _$SurveyActorState {
     TResult Function()? deleteSurveySuccess,
     TResult Function(FirebaseFirestoreFailure failureException)?
         deleteSurveyFailure,
+    TResult Function()? addSurveyResultSuccess,
+    TResult Function(FirebaseFirestoreFailure failureException)?
+        addSurveyResultFailure,
     TResult Function()? loadingProgressState,
     TResult Function()? initial,
     required TResult orElse(),
@@ -48,6 +57,10 @@ mixin _$SurveyActorState {
   TResult map<TResult extends Object?>({
     required TResult Function(_DeleteSurveySuccess value) deleteSurveySuccess,
     required TResult Function(_DeleteSurveyFailure value) deleteSurveyFailure,
+    required TResult Function(_AddSurveyResultSuccess value)
+        addSurveyResultSuccess,
+    required TResult Function(_AddSurveyResultFailure value)
+        addSurveyResultFailure,
     required TResult Function(_LoadingProgressState value) loadingProgressState,
     required TResult Function(_Initial value) initial,
   }) =>
@@ -56,6 +69,8 @@ mixin _$SurveyActorState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_DeleteSurveySuccess value)? deleteSurveySuccess,
     TResult? Function(_DeleteSurveyFailure value)? deleteSurveyFailure,
+    TResult? Function(_AddSurveyResultSuccess value)? addSurveyResultSuccess,
+    TResult? Function(_AddSurveyResultFailure value)? addSurveyResultFailure,
     TResult? Function(_LoadingProgressState value)? loadingProgressState,
     TResult? Function(_Initial value)? initial,
   }) =>
@@ -64,6 +79,8 @@ mixin _$SurveyActorState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_DeleteSurveySuccess value)? deleteSurveySuccess,
     TResult Function(_DeleteSurveyFailure value)? deleteSurveyFailure,
+    TResult Function(_AddSurveyResultSuccess value)? addSurveyResultSuccess,
+    TResult Function(_AddSurveyResultFailure value)? addSurveyResultFailure,
     TResult Function(_LoadingProgressState value)? loadingProgressState,
     TResult Function(_Initial value)? initial,
     required TResult orElse(),
@@ -130,6 +147,9 @@ class _$_DeleteSurveySuccess implements _DeleteSurveySuccess {
     required TResult Function() deleteSurveySuccess,
     required TResult Function(FirebaseFirestoreFailure failureException)
         deleteSurveyFailure,
+    required TResult Function() addSurveyResultSuccess,
+    required TResult Function(FirebaseFirestoreFailure failureException)
+        addSurveyResultFailure,
     required TResult Function() loadingProgressState,
     required TResult Function() initial,
   }) {
@@ -142,6 +162,9 @@ class _$_DeleteSurveySuccess implements _DeleteSurveySuccess {
     TResult? Function()? deleteSurveySuccess,
     TResult? Function(FirebaseFirestoreFailure failureException)?
         deleteSurveyFailure,
+    TResult? Function()? addSurveyResultSuccess,
+    TResult? Function(FirebaseFirestoreFailure failureException)?
+        addSurveyResultFailure,
     TResult? Function()? loadingProgressState,
     TResult? Function()? initial,
   }) {
@@ -154,6 +177,9 @@ class _$_DeleteSurveySuccess implements _DeleteSurveySuccess {
     TResult Function()? deleteSurveySuccess,
     TResult Function(FirebaseFirestoreFailure failureException)?
         deleteSurveyFailure,
+    TResult Function()? addSurveyResultSuccess,
+    TResult Function(FirebaseFirestoreFailure failureException)?
+        addSurveyResultFailure,
     TResult Function()? loadingProgressState,
     TResult Function()? initial,
     required TResult orElse(),
@@ -169,6 +195,10 @@ class _$_DeleteSurveySuccess implements _DeleteSurveySuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(_DeleteSurveySuccess value) deleteSurveySuccess,
     required TResult Function(_DeleteSurveyFailure value) deleteSurveyFailure,
+    required TResult Function(_AddSurveyResultSuccess value)
+        addSurveyResultSuccess,
+    required TResult Function(_AddSurveyResultFailure value)
+        addSurveyResultFailure,
     required TResult Function(_LoadingProgressState value) loadingProgressState,
     required TResult Function(_Initial value) initial,
   }) {
@@ -180,6 +210,8 @@ class _$_DeleteSurveySuccess implements _DeleteSurveySuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_DeleteSurveySuccess value)? deleteSurveySuccess,
     TResult? Function(_DeleteSurveyFailure value)? deleteSurveyFailure,
+    TResult? Function(_AddSurveyResultSuccess value)? addSurveyResultSuccess,
+    TResult? Function(_AddSurveyResultFailure value)? addSurveyResultFailure,
     TResult? Function(_LoadingProgressState value)? loadingProgressState,
     TResult? Function(_Initial value)? initial,
   }) {
@@ -191,6 +223,8 @@ class _$_DeleteSurveySuccess implements _DeleteSurveySuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_DeleteSurveySuccess value)? deleteSurveySuccess,
     TResult Function(_DeleteSurveyFailure value)? deleteSurveyFailure,
+    TResult Function(_AddSurveyResultSuccess value)? addSurveyResultSuccess,
+    TResult Function(_AddSurveyResultFailure value)? addSurveyResultFailure,
     TResult Function(_LoadingProgressState value)? loadingProgressState,
     TResult Function(_Initial value)? initial,
     required TResult orElse(),
@@ -286,6 +320,9 @@ class _$_DeleteSurveyFailure implements _DeleteSurveyFailure {
     required TResult Function() deleteSurveySuccess,
     required TResult Function(FirebaseFirestoreFailure failureException)
         deleteSurveyFailure,
+    required TResult Function() addSurveyResultSuccess,
+    required TResult Function(FirebaseFirestoreFailure failureException)
+        addSurveyResultFailure,
     required TResult Function() loadingProgressState,
     required TResult Function() initial,
   }) {
@@ -298,6 +335,9 @@ class _$_DeleteSurveyFailure implements _DeleteSurveyFailure {
     TResult? Function()? deleteSurveySuccess,
     TResult? Function(FirebaseFirestoreFailure failureException)?
         deleteSurveyFailure,
+    TResult? Function()? addSurveyResultSuccess,
+    TResult? Function(FirebaseFirestoreFailure failureException)?
+        addSurveyResultFailure,
     TResult? Function()? loadingProgressState,
     TResult? Function()? initial,
   }) {
@@ -310,6 +350,9 @@ class _$_DeleteSurveyFailure implements _DeleteSurveyFailure {
     TResult Function()? deleteSurveySuccess,
     TResult Function(FirebaseFirestoreFailure failureException)?
         deleteSurveyFailure,
+    TResult Function()? addSurveyResultSuccess,
+    TResult Function(FirebaseFirestoreFailure failureException)?
+        addSurveyResultFailure,
     TResult Function()? loadingProgressState,
     TResult Function()? initial,
     required TResult orElse(),
@@ -325,6 +368,10 @@ class _$_DeleteSurveyFailure implements _DeleteSurveyFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_DeleteSurveySuccess value) deleteSurveySuccess,
     required TResult Function(_DeleteSurveyFailure value) deleteSurveyFailure,
+    required TResult Function(_AddSurveyResultSuccess value)
+        addSurveyResultSuccess,
+    required TResult Function(_AddSurveyResultFailure value)
+        addSurveyResultFailure,
     required TResult Function(_LoadingProgressState value) loadingProgressState,
     required TResult Function(_Initial value) initial,
   }) {
@@ -336,6 +383,8 @@ class _$_DeleteSurveyFailure implements _DeleteSurveyFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_DeleteSurveySuccess value)? deleteSurveySuccess,
     TResult? Function(_DeleteSurveyFailure value)? deleteSurveyFailure,
+    TResult? Function(_AddSurveyResultSuccess value)? addSurveyResultSuccess,
+    TResult? Function(_AddSurveyResultFailure value)? addSurveyResultFailure,
     TResult? Function(_LoadingProgressState value)? loadingProgressState,
     TResult? Function(_Initial value)? initial,
   }) {
@@ -347,6 +396,8 @@ class _$_DeleteSurveyFailure implements _DeleteSurveyFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_DeleteSurveySuccess value)? deleteSurveySuccess,
     TResult Function(_DeleteSurveyFailure value)? deleteSurveyFailure,
+    TResult Function(_AddSurveyResultSuccess value)? addSurveyResultSuccess,
+    TResult Function(_AddSurveyResultFailure value)? addSurveyResultFailure,
     TResult Function(_LoadingProgressState value)? loadingProgressState,
     TResult Function(_Initial value)? initial,
     required TResult orElse(),
@@ -365,6 +416,321 @@ abstract class _DeleteSurveyFailure implements SurveyActorState {
   FirebaseFirestoreFailure get failureException;
   @JsonKey(ignore: true)
   _$$_DeleteSurveyFailureCopyWith<_$_DeleteSurveyFailure> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_AddSurveyResultSuccessCopyWith<$Res> {
+  factory _$$_AddSurveyResultSuccessCopyWith(_$_AddSurveyResultSuccess value,
+          $Res Function(_$_AddSurveyResultSuccess) then) =
+      __$$_AddSurveyResultSuccessCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_AddSurveyResultSuccessCopyWithImpl<$Res>
+    extends _$SurveyActorStateCopyWithImpl<$Res, _$_AddSurveyResultSuccess>
+    implements _$$_AddSurveyResultSuccessCopyWith<$Res> {
+  __$$_AddSurveyResultSuccessCopyWithImpl(_$_AddSurveyResultSuccess _value,
+      $Res Function(_$_AddSurveyResultSuccess) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_AddSurveyResultSuccess implements _AddSurveyResultSuccess {
+  const _$_AddSurveyResultSuccess();
+
+  @override
+  String toString() {
+    return 'SurveyActorState.addSurveyResultSuccess()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AddSurveyResultSuccess);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() deleteSurveySuccess,
+    required TResult Function(FirebaseFirestoreFailure failureException)
+        deleteSurveyFailure,
+    required TResult Function() addSurveyResultSuccess,
+    required TResult Function(FirebaseFirestoreFailure failureException)
+        addSurveyResultFailure,
+    required TResult Function() loadingProgressState,
+    required TResult Function() initial,
+  }) {
+    return addSurveyResultSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? deleteSurveySuccess,
+    TResult? Function(FirebaseFirestoreFailure failureException)?
+        deleteSurveyFailure,
+    TResult? Function()? addSurveyResultSuccess,
+    TResult? Function(FirebaseFirestoreFailure failureException)?
+        addSurveyResultFailure,
+    TResult? Function()? loadingProgressState,
+    TResult? Function()? initial,
+  }) {
+    return addSurveyResultSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? deleteSurveySuccess,
+    TResult Function(FirebaseFirestoreFailure failureException)?
+        deleteSurveyFailure,
+    TResult Function()? addSurveyResultSuccess,
+    TResult Function(FirebaseFirestoreFailure failureException)?
+        addSurveyResultFailure,
+    TResult Function()? loadingProgressState,
+    TResult Function()? initial,
+    required TResult orElse(),
+  }) {
+    if (addSurveyResultSuccess != null) {
+      return addSurveyResultSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DeleteSurveySuccess value) deleteSurveySuccess,
+    required TResult Function(_DeleteSurveyFailure value) deleteSurveyFailure,
+    required TResult Function(_AddSurveyResultSuccess value)
+        addSurveyResultSuccess,
+    required TResult Function(_AddSurveyResultFailure value)
+        addSurveyResultFailure,
+    required TResult Function(_LoadingProgressState value) loadingProgressState,
+    required TResult Function(_Initial value) initial,
+  }) {
+    return addSurveyResultSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DeleteSurveySuccess value)? deleteSurveySuccess,
+    TResult? Function(_DeleteSurveyFailure value)? deleteSurveyFailure,
+    TResult? Function(_AddSurveyResultSuccess value)? addSurveyResultSuccess,
+    TResult? Function(_AddSurveyResultFailure value)? addSurveyResultFailure,
+    TResult? Function(_LoadingProgressState value)? loadingProgressState,
+    TResult? Function(_Initial value)? initial,
+  }) {
+    return addSurveyResultSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DeleteSurveySuccess value)? deleteSurveySuccess,
+    TResult Function(_DeleteSurveyFailure value)? deleteSurveyFailure,
+    TResult Function(_AddSurveyResultSuccess value)? addSurveyResultSuccess,
+    TResult Function(_AddSurveyResultFailure value)? addSurveyResultFailure,
+    TResult Function(_LoadingProgressState value)? loadingProgressState,
+    TResult Function(_Initial value)? initial,
+    required TResult orElse(),
+  }) {
+    if (addSurveyResultSuccess != null) {
+      return addSurveyResultSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddSurveyResultSuccess implements SurveyActorState {
+  const factory _AddSurveyResultSuccess() = _$_AddSurveyResultSuccess;
+}
+
+/// @nodoc
+abstract class _$$_AddSurveyResultFailureCopyWith<$Res> {
+  factory _$$_AddSurveyResultFailureCopyWith(_$_AddSurveyResultFailure value,
+          $Res Function(_$_AddSurveyResultFailure) then) =
+      __$$_AddSurveyResultFailureCopyWithImpl<$Res>;
+  @useResult
+  $Res call({FirebaseFirestoreFailure failureException});
+
+  $FirebaseFirestoreFailureCopyWith<$Res> get failureException;
+}
+
+/// @nodoc
+class __$$_AddSurveyResultFailureCopyWithImpl<$Res>
+    extends _$SurveyActorStateCopyWithImpl<$Res, _$_AddSurveyResultFailure>
+    implements _$$_AddSurveyResultFailureCopyWith<$Res> {
+  __$$_AddSurveyResultFailureCopyWithImpl(_$_AddSurveyResultFailure _value,
+      $Res Function(_$_AddSurveyResultFailure) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failureException = null,
+  }) {
+    return _then(_$_AddSurveyResultFailure(
+      null == failureException
+          ? _value.failureException
+          : failureException // ignore: cast_nullable_to_non_nullable
+              as FirebaseFirestoreFailure,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FirebaseFirestoreFailureCopyWith<$Res> get failureException {
+    return $FirebaseFirestoreFailureCopyWith<$Res>(_value.failureException,
+        (value) {
+      return _then(_value.copyWith(failureException: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_AddSurveyResultFailure implements _AddSurveyResultFailure {
+  const _$_AddSurveyResultFailure(this.failureException);
+
+  @override
+  final FirebaseFirestoreFailure failureException;
+
+  @override
+  String toString() {
+    return 'SurveyActorState.addSurveyResultFailure(failureException: $failureException)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AddSurveyResultFailure &&
+            (identical(other.failureException, failureException) ||
+                other.failureException == failureException));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, failureException);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AddSurveyResultFailureCopyWith<_$_AddSurveyResultFailure> get copyWith =>
+      __$$_AddSurveyResultFailureCopyWithImpl<_$_AddSurveyResultFailure>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() deleteSurveySuccess,
+    required TResult Function(FirebaseFirestoreFailure failureException)
+        deleteSurveyFailure,
+    required TResult Function() addSurveyResultSuccess,
+    required TResult Function(FirebaseFirestoreFailure failureException)
+        addSurveyResultFailure,
+    required TResult Function() loadingProgressState,
+    required TResult Function() initial,
+  }) {
+    return addSurveyResultFailure(failureException);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? deleteSurveySuccess,
+    TResult? Function(FirebaseFirestoreFailure failureException)?
+        deleteSurveyFailure,
+    TResult? Function()? addSurveyResultSuccess,
+    TResult? Function(FirebaseFirestoreFailure failureException)?
+        addSurveyResultFailure,
+    TResult? Function()? loadingProgressState,
+    TResult? Function()? initial,
+  }) {
+    return addSurveyResultFailure?.call(failureException);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? deleteSurveySuccess,
+    TResult Function(FirebaseFirestoreFailure failureException)?
+        deleteSurveyFailure,
+    TResult Function()? addSurveyResultSuccess,
+    TResult Function(FirebaseFirestoreFailure failureException)?
+        addSurveyResultFailure,
+    TResult Function()? loadingProgressState,
+    TResult Function()? initial,
+    required TResult orElse(),
+  }) {
+    if (addSurveyResultFailure != null) {
+      return addSurveyResultFailure(failureException);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DeleteSurveySuccess value) deleteSurveySuccess,
+    required TResult Function(_DeleteSurveyFailure value) deleteSurveyFailure,
+    required TResult Function(_AddSurveyResultSuccess value)
+        addSurveyResultSuccess,
+    required TResult Function(_AddSurveyResultFailure value)
+        addSurveyResultFailure,
+    required TResult Function(_LoadingProgressState value) loadingProgressState,
+    required TResult Function(_Initial value) initial,
+  }) {
+    return addSurveyResultFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DeleteSurveySuccess value)? deleteSurveySuccess,
+    TResult? Function(_DeleteSurveyFailure value)? deleteSurveyFailure,
+    TResult? Function(_AddSurveyResultSuccess value)? addSurveyResultSuccess,
+    TResult? Function(_AddSurveyResultFailure value)? addSurveyResultFailure,
+    TResult? Function(_LoadingProgressState value)? loadingProgressState,
+    TResult? Function(_Initial value)? initial,
+  }) {
+    return addSurveyResultFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DeleteSurveySuccess value)? deleteSurveySuccess,
+    TResult Function(_DeleteSurveyFailure value)? deleteSurveyFailure,
+    TResult Function(_AddSurveyResultSuccess value)? addSurveyResultSuccess,
+    TResult Function(_AddSurveyResultFailure value)? addSurveyResultFailure,
+    TResult Function(_LoadingProgressState value)? loadingProgressState,
+    TResult Function(_Initial value)? initial,
+    required TResult orElse(),
+  }) {
+    if (addSurveyResultFailure != null) {
+      return addSurveyResultFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddSurveyResultFailure implements SurveyActorState {
+  const factory _AddSurveyResultFailure(
+          final FirebaseFirestoreFailure failureException) =
+      _$_AddSurveyResultFailure;
+
+  FirebaseFirestoreFailure get failureException;
+  @JsonKey(ignore: true)
+  _$$_AddSurveyResultFailureCopyWith<_$_AddSurveyResultFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -409,6 +775,9 @@ class _$_LoadingProgressState implements _LoadingProgressState {
     required TResult Function() deleteSurveySuccess,
     required TResult Function(FirebaseFirestoreFailure failureException)
         deleteSurveyFailure,
+    required TResult Function() addSurveyResultSuccess,
+    required TResult Function(FirebaseFirestoreFailure failureException)
+        addSurveyResultFailure,
     required TResult Function() loadingProgressState,
     required TResult Function() initial,
   }) {
@@ -421,6 +790,9 @@ class _$_LoadingProgressState implements _LoadingProgressState {
     TResult? Function()? deleteSurveySuccess,
     TResult? Function(FirebaseFirestoreFailure failureException)?
         deleteSurveyFailure,
+    TResult? Function()? addSurveyResultSuccess,
+    TResult? Function(FirebaseFirestoreFailure failureException)?
+        addSurveyResultFailure,
     TResult? Function()? loadingProgressState,
     TResult? Function()? initial,
   }) {
@@ -433,6 +805,9 @@ class _$_LoadingProgressState implements _LoadingProgressState {
     TResult Function()? deleteSurveySuccess,
     TResult Function(FirebaseFirestoreFailure failureException)?
         deleteSurveyFailure,
+    TResult Function()? addSurveyResultSuccess,
+    TResult Function(FirebaseFirestoreFailure failureException)?
+        addSurveyResultFailure,
     TResult Function()? loadingProgressState,
     TResult Function()? initial,
     required TResult orElse(),
@@ -448,6 +823,10 @@ class _$_LoadingProgressState implements _LoadingProgressState {
   TResult map<TResult extends Object?>({
     required TResult Function(_DeleteSurveySuccess value) deleteSurveySuccess,
     required TResult Function(_DeleteSurveyFailure value) deleteSurveyFailure,
+    required TResult Function(_AddSurveyResultSuccess value)
+        addSurveyResultSuccess,
+    required TResult Function(_AddSurveyResultFailure value)
+        addSurveyResultFailure,
     required TResult Function(_LoadingProgressState value) loadingProgressState,
     required TResult Function(_Initial value) initial,
   }) {
@@ -459,6 +838,8 @@ class _$_LoadingProgressState implements _LoadingProgressState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_DeleteSurveySuccess value)? deleteSurveySuccess,
     TResult? Function(_DeleteSurveyFailure value)? deleteSurveyFailure,
+    TResult? Function(_AddSurveyResultSuccess value)? addSurveyResultSuccess,
+    TResult? Function(_AddSurveyResultFailure value)? addSurveyResultFailure,
     TResult? Function(_LoadingProgressState value)? loadingProgressState,
     TResult? Function(_Initial value)? initial,
   }) {
@@ -470,6 +851,8 @@ class _$_LoadingProgressState implements _LoadingProgressState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_DeleteSurveySuccess value)? deleteSurveySuccess,
     TResult Function(_DeleteSurveyFailure value)? deleteSurveyFailure,
+    TResult Function(_AddSurveyResultSuccess value)? addSurveyResultSuccess,
+    TResult Function(_AddSurveyResultFailure value)? addSurveyResultFailure,
     TResult Function(_LoadingProgressState value)? loadingProgressState,
     TResult Function(_Initial value)? initial,
     required TResult orElse(),
@@ -525,6 +908,9 @@ class _$_Initial implements _Initial {
     required TResult Function() deleteSurveySuccess,
     required TResult Function(FirebaseFirestoreFailure failureException)
         deleteSurveyFailure,
+    required TResult Function() addSurveyResultSuccess,
+    required TResult Function(FirebaseFirestoreFailure failureException)
+        addSurveyResultFailure,
     required TResult Function() loadingProgressState,
     required TResult Function() initial,
   }) {
@@ -537,6 +923,9 @@ class _$_Initial implements _Initial {
     TResult? Function()? deleteSurveySuccess,
     TResult? Function(FirebaseFirestoreFailure failureException)?
         deleteSurveyFailure,
+    TResult? Function()? addSurveyResultSuccess,
+    TResult? Function(FirebaseFirestoreFailure failureException)?
+        addSurveyResultFailure,
     TResult? Function()? loadingProgressState,
     TResult? Function()? initial,
   }) {
@@ -549,6 +938,9 @@ class _$_Initial implements _Initial {
     TResult Function()? deleteSurveySuccess,
     TResult Function(FirebaseFirestoreFailure failureException)?
         deleteSurveyFailure,
+    TResult Function()? addSurveyResultSuccess,
+    TResult Function(FirebaseFirestoreFailure failureException)?
+        addSurveyResultFailure,
     TResult Function()? loadingProgressState,
     TResult Function()? initial,
     required TResult orElse(),
@@ -564,6 +956,10 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_DeleteSurveySuccess value) deleteSurveySuccess,
     required TResult Function(_DeleteSurveyFailure value) deleteSurveyFailure,
+    required TResult Function(_AddSurveyResultSuccess value)
+        addSurveyResultSuccess,
+    required TResult Function(_AddSurveyResultFailure value)
+        addSurveyResultFailure,
     required TResult Function(_LoadingProgressState value) loadingProgressState,
     required TResult Function(_Initial value) initial,
   }) {
@@ -575,6 +971,8 @@ class _$_Initial implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_DeleteSurveySuccess value)? deleteSurveySuccess,
     TResult? Function(_DeleteSurveyFailure value)? deleteSurveyFailure,
+    TResult? Function(_AddSurveyResultSuccess value)? addSurveyResultSuccess,
+    TResult? Function(_AddSurveyResultFailure value)? addSurveyResultFailure,
     TResult? Function(_LoadingProgressState value)? loadingProgressState,
     TResult? Function(_Initial value)? initial,
   }) {
@@ -586,6 +984,8 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_DeleteSurveySuccess value)? deleteSurveySuccess,
     TResult Function(_DeleteSurveyFailure value)? deleteSurveyFailure,
+    TResult Function(_AddSurveyResultSuccess value)? addSurveyResultSuccess,
+    TResult Function(_AddSurveyResultFailure value)? addSurveyResultFailure,
     TResult Function(_LoadingProgressState value)? loadingProgressState,
     TResult Function(_Initial value)? initial,
     required TResult orElse(),

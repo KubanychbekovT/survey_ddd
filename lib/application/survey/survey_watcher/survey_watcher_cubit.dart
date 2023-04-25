@@ -12,7 +12,7 @@ part 'survey_watcher_cubit.freezed.dart';
 class SurveyWatcherCubit extends Cubit<SurveyWatcherState> {
   final ISurveyRepository _surveyRepository;
   SurveyWatcherCubit(this._surveyRepository) : super( SurveyWatcherState.initial());
-  startWatchAll (e) {
+  startWatchAll () {
   emit(SurveyWatcherState.loadInProgress());
   _surveyRepository.watchAllSurveys().listen((failureOrSurveys) {
     _receiveSurveys(failureOrSurveys);

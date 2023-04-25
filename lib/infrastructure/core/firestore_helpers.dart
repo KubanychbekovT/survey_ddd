@@ -12,6 +12,7 @@ import 'package:survey/infrastructure/survey/survey_dto.dart';
 // }
 extension FireStoreX on FirebaseFirestore {
   CollectionReference get surveyCollection => collection("surveys");
+  CollectionReference get surveyResultCollection => collection("surveyResults");
 
   CollectionReference get userCollection => collection("users");
 

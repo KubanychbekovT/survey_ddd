@@ -1,6 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:survey/application/survey/survey_actor/survey_actor_cubit.dart';
 import 'package:survey/domain/survey/question.dart';
 import 'package:survey/domain/survey/survey.dart';
+import 'package:survey/domain/survey/survey_result.dart';
+import 'package:survey/infrastructure/core/firestore_helpers.dart';
 import 'package:survey/presentation/survey/result_page.dart';
 import 'package:survey/presentation/survey/widgets/answer_option.dart';
 import 'package:survey/presentation/survey/widgets/next_button.dart';
@@ -20,8 +25,15 @@ class _SurveyPageState extends State<SurveyPage> {
 
   @override
   Widget build(BuildContext context) {
-    final Question question=widget.survey.surveyQuestions.getOrCrash()[currentQuestionIndex];
-    return Scaffold(
+    final Question question =
+        widget.survey.surveyQuestions.getOrCrash()[currentQuestionIndex];
+    return BlocListener<SurveyActorCubit, SurveyActorState>(
+  listener: (context, state) {
+   state.maybeMap(addSurveyResultSuccess: (_){
+     Navigator.pop(context);
+   },orElse: (){});
+  },
+  child: Scaffold(
       backgroundColor: Color(0xffe5d1ff),
       body: Column(
         children: [
@@ -71,10 +83,12 @@ class _SurveyPageState extends State<SurveyPage> {
                               itemCount: question.options.getOrCrash().length,
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
-                                final answer = question.options.getOrCrash()[index].getOrCrash();
+                                final answer = question.options
+                                    .getOrCrash()[index]
+                                    .getOrCrash();
                                 return AnswerOption(
-                                question: question,
-                                index: index,
+                                  question: question,
+                                  index: index,
                                   isSelected: index == selectedAnswer,
                                   onTap: () {
                                     setState(() {
@@ -92,20 +106,20 @@ class _SurveyPageState extends State<SurveyPage> {
             ),
           ),
           () {
-            final isLastQuestion =
-                currentQuestionIndex == widget.survey.surveyQuestions.getOrCrash().length - 1;
+            final isLastQuestion = currentQuestionIndex ==
+                widget.survey.surveyQuestions.getOrCrash().length - 1;
             return NextButton(
               onTap: () {
                 answers.add(selectedAnswer!);
-
                 if (isLastQuestion) {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => ResultPage(
-                  //               questions: questionList,
-                  //               selectedAnswers: answers,
-                  //             )));
+                  context.read<SurveyActorCubit>().addSurveyResult(
+                        SurveyResult(
+                            surveyReference: widget.survey.reference,
+                            participantReference:
+                                FirebaseFirestore.instance.dummyRef,
+                            date: DateTime.now(),
+                            answers: answers),
+                      );
                 } else {
                   setState(() {
                     selectedAnswer = null;
@@ -121,6 +135,7 @@ class _SurveyPageState extends State<SurveyPage> {
           )
         ],
       ),
-    );
+    ),
+);
   }
 }

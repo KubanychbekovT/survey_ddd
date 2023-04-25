@@ -1,55 +1,76 @@
 import 'package:flutter/material.dart';
-import 'package:survey/presentation/core/widgets/custom_app_bar.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomScaffold extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final Widget body;
   final Widget? floatingActionButton;
   final bool isScrolling;
-  final Widget? appBarTitle;
   final BottomNavigationBar? bottomNavigationBar;
-  final bool useAppBar;
   final List<Widget> actions;
-  final Drawer? drawer;
-  final bool hasBackButton;
-  final double? titleSpacing;
+  final String? title;
+  final bool showBackButton ;
   const CustomScaffold({
     Key? key,
     required this.body,
     this.floatingActionButton,
     this.padding,
-    this.useAppBar = true,
     this.bottomNavigationBar,
     this.actions = const [],
-    this.isScrolling = false,
-    this.hasBackButton=true,
-    this.appBarTitle,
-    this.titleSpacing,
-    this.drawer
+    this.isScrolling = false, this.title, this.showBackButton=false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer:  drawer,
-      appBar: useAppBar
-          ? CustomAppBar(
-        hasBackButton: hasBackButton,
-              textTitle: appBarTitle,
-              titleSpacing: titleSpacing,
-              actions: actions,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Color(0xffe5d1ff),
+        appBar: title==null?null:AppBar(
+          automaticallyImplyLeading: false,
+          title: Text(
+            title!,
+            style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w600),
+          ),
+          centerTitle: showBackButton,
+          leading: showBackButton? IconButton(
+            onPressed: () {
+              context.pop();
+            },
+            icon: const Icon(Icons.keyboard_backspace_outlined),
+            color: Colors.black,
+          ):null,
+          actions: actions,
+          elevation: 0,
+          backgroundColor: Color(0xffe5d1ff),
+        ),
+        body: ScrollConfiguration(
+          behavior: NoGlowNoScrollbarScrollBehavior().copyWith(scrollbars: false),
+          child: Padding(
+            padding: padding ?? const EdgeInsets.all(16.0).copyWith(bottom: 0),
+            child: isScrolling
+                ? SingleChildScrollView(
+              child: body,
             )
-          : null,
-      body: Padding(
-        padding: padding ?? const EdgeInsets.symmetric(horizontal: 5),
-        child: isScrolling
-            ? SingleChildScrollView(
-                child: body,
-              )
-            : body,
+                : body,
+          ),
+        ),
+        bottomNavigationBar: bottomNavigationBar,
+        floatingActionButton: floatingActionButton,
       ),
-      bottomNavigationBar: bottomNavigationBar,
-      floatingActionButton: floatingActionButton,
     );
+  }
+
+}
+class NoGlowNoScrollbarScrollBehavior extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
+  }
+
+  @override
+  ScrollPhysics getScrollPhysics(BuildContext context) {
+    return ClampingScrollPhysics();
   }
 }

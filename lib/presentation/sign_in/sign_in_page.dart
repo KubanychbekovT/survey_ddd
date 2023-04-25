@@ -15,7 +15,7 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-        useAppBar: false,
+
         body: Builder(
           builder: (context) {
             return Center(

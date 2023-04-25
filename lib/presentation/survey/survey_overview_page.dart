@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:survey/application/survey/survey_watcher/survey_watcher_cubit.dart';
+import 'package:survey/domain/survey/survey.dart';
+import 'package:survey/presentation/core/widgets/custom_progress_indicator.dart';
+import 'package:survey/presentation/core/widgets/custom_scaffold.dart';
 import 'package:survey/presentation/survey/widgets/survey_card.dart';
 
 class SurveyOverviewPage extends StatelessWidget {
@@ -6,22 +11,36 @@ class SurveyOverviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Color(0xffe5d1ff),
-        body: Column(
-          children: [
-            Text('Surveys', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-            ListView.builder(
-              shrinkWrap: true,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SurveyCard(),
-                ),
-            itemCount: 8,),
-          ],
-        ),
+    return CustomScaffold(
+      title: "Surveys",
+      body: Column(
+        children: [
+          BlocBuilder<SurveyWatcherCubit, SurveyWatcherState>(
+            builder: (context, state) {
+              return state.map(
+                  initial: (_) => SizedBox(),
+                  loadInProgress: (_) => CustomProgressIndicator(),
+                  loadSuccess: (state) {
+                    final surveys=state.surveys;
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        final survey = surveys[index];
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SurveyCard(
+                            survey: survey,
+                          ),
+                        );
+                      },
+                      itemCount: surveys.length,
+                    );
+                  },
+                  loadFailure: (_) => SizedBox());
+            },
+          ),
+        ],
+      ),
     );
   }
 }
-
-
