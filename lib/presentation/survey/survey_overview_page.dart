@@ -4,6 +4,8 @@ import 'package:survey/application/survey/survey_watcher/survey_watcher_cubit.da
 import 'package:survey/domain/survey/survey.dart';
 import 'package:survey/presentation/core/widgets/custom_progress_indicator.dart';
 import 'package:survey/presentation/core/widgets/custom_scaffold.dart';
+import 'package:survey/presentation/core/widgets/new_survey_form.dart';
+import 'package:survey/presentation/survey/create_page.dart';
 import 'package:survey/presentation/survey/widgets/survey_card.dart';
 
 class SurveyOverviewPage extends StatelessWidget {
@@ -21,7 +23,7 @@ class SurveyOverviewPage extends StatelessWidget {
                   initial: (_) => SizedBox(),
                   loadInProgress: (_) => CustomProgressIndicator(),
                   loadSuccess: (state) {
-                    final surveys=state.surveys;
+                    final surveys = state.surveys;
                     return ListView.builder(
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
@@ -41,6 +43,15 @@ class SurveyOverviewPage extends StatelessWidget {
           ),
         ],
       ),
+      onNewSurveyPressed: ()=> _createNewSurvey(context),
     );
   }
+  void _createNewSurvey(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SurveyCreationPage(),
+      ),
+    );
+}
 }

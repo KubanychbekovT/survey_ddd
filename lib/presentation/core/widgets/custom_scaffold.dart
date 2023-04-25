@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:survey/presentation/core/widgets/new_survey_form.dart';
 
 class CustomScaffold extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
@@ -10,6 +11,7 @@ class CustomScaffold extends StatelessWidget {
   final List<Widget> actions;
   final String? title;
   final bool showBackButton ;
+  final VoidCallback? onNewSurveyPressed;
   const CustomScaffold({
     Key? key,
     required this.body,
@@ -18,6 +20,7 @@ class CustomScaffold extends StatelessWidget {
     this.bottomNavigationBar,
     this.actions = const [],
     this.isScrolling = false, this.title, this.showBackButton=false,
+    this.onNewSurveyPressed,
   }) : super(key: key);
 
   @override
@@ -33,6 +36,7 @@ class CustomScaffold extends StatelessWidget {
                 color: Colors.black,
                 fontWeight: FontWeight.w600),
           ),
+
           centerTitle: showBackButton,
           leading: showBackButton? IconButton(
             onPressed: () {
@@ -57,7 +61,11 @@ class CustomScaffold extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: bottomNavigationBar,
-        floatingActionButton: floatingActionButton,
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Color(0xff9e71e7),
+          onPressed: onNewSurveyPressed,
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }
@@ -74,3 +82,4 @@ class NoGlowNoScrollbarScrollBehavior extends ScrollBehavior {
     return ClampingScrollPhysics();
   }
 }
+
