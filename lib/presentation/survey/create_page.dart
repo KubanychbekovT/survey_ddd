@@ -1,48 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:survey/application/survey/survey_form/survey_form_cubit.dart';
+import 'package:survey/injection.dart';
 
-class SurveyCreationPage extends StatefulWidget {
+class SurveyCreationPage extends StatelessWidget {
   const SurveyCreationPage({Key? key}) : super(key: key);
-
-  @override
-  _SurveyCreationPageState createState() => _SurveyCreationPageState();
-}
-
-class _SurveyCreationPageState extends State<SurveyCreationPage> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _questionController = TextEditingController();
-  List<TextEditingController> _optionControllers = [];
-
-  @override
-  void dispose() {
-    _questionController.dispose();
-    _optionControllers.forEach((controller) => controller.dispose());
-    super.dispose();
-  }
-
-  void _addOption() {
-    if(_optionControllers.length<4){
-      setState(() {
-        _optionControllers.add(TextEditingController());
-      });
-    }
-
-  }
-
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      String questionText = _questionController.text;
-      List<Map<String, dynamic>> options = _optionControllers
-          .map((controller) => {'text': controller.text, 'isCorrect': false})
-          .toList();
-
-      // Save the question and options to your data source.
-
-      // After saving, you can navigate back or display a success message.
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Survey question created successfully!')),
-      );
-    }
-  }
 
   InputDecoration _inputDecoration(String labelText) {
     return InputDecoration(
@@ -62,75 +24,122 @@ class _SurveyCreationPageState extends State<SurveyCreationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Padding(
-            padding: EdgeInsets.all(16),
-            child: Form(
-                key: _formKey,
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: BlocProvider(
+          create: (context) => getIt<SurveyFormCubit>(),
+          child: BlocConsumer<SurveyFormCubit, SurveyFormState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              return Form(
+                autovalidateMode: state.showErrorMessages,
                 child: ListView(
                   children: [
-                  TextFormField(
-                  controller: _questionController,
-                  decoration: _inputDecoration('Question'),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a question';
-                    }
-                    return null;
-                  },
-                  style: TextStyle(color: Color(0xff6d30bc)),
+                    TextFormField(
+                      decoration: _inputDecoration('Survey name'),
+                      autovalidateMode: state.showErrorMessages,
+                      onChanged: (value) =>
+                          context.read<SurveyFormCubit>().nameChanged(value),
+                      validator: (_) => context
+                          .read<SurveyFormCubit>()
+                          .state
+                          .survey
+                          .name
+                          .value
+                          .fold(
+                              (f) => f.maybeMap(
+                                  empty: (value) => "Name cannot bae empty",
+                                  orElse: () => null),
+                              (r) => null),
+                      style: TextStyle(color: Color(0xff6d30bc)),
+                    ),
+                    Column(children: [
+                      state.survey.surveyQuestions.value.fold((l) => null, (r) => null);
+                    ],)
+                    Material(
+                      elevation: 2,
+                      child: Container(
+                        color: Colors.white,
+                        decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(12)),
+                        child: TextFormField(
+                          decoration: _inputDecoration('Question'),
+                          autovalidateMode: AutovalidateMode.always,
+                          // onChanged: (value) {
+                          //   _formKey.currentState!.validate();
+                          // },
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a question';
+                            }
+
+                            return null;
+                          },
+                          style: TextStyle(color: Color(0xff6d30bc)),
+                        ),
+                      ),
+                    ),
+                    // ..._optionControllers.map((controller) {
+                    //   return Padding(
+                    //     padding: EdgeInsets.symmetric(vertical: 8),
+                    //     child: TextFormField(
+                    //       controller: controller,
+                    //       decoration: _inputDecoration('Option'),
+                    //       validator: (value) {
+                    //         if (value == null || value.isEmpty) {
+                    //           return 'Please enter an option';
+                    //         }
+                    //         return null;
+                    //       },
+                    //       style: TextStyle(color: Color(0xff6d30bc)),
+                    //     ),
+                    //   );
+                    // }).toList(),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            height: 40,
+                            child: TextButton(
+                                style: TextButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            12))),
+                                onPressed: () {
+                                  //_addOption();
+                                },
+                                child: Text(
+                                  "Add question",
+                                  style: TextStyle(color: Color(0xff6d30bc)),
+                                )),
+                          ),
+                        ),
+                        Expanded(
+                          child: SizedBox(
+                            height: 40,
+                            child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Color(0xff9e71e7),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            12))),
+                                onPressed: () {
+                                  // _submitForm();
+                                },
+                                child: Text("Submit")),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                ..._optionControllers.map((controller) {
-        return Padding(
-        padding: EdgeInsets.symmetric(vertical: 8),
-        child: TextFormField(
-        controller: controller,
-        decoration: _inputDecoration('Option'),
-        validator: (value) {
-        if (value == null || value.isEmpty) {
-        return 'Please enter an option';
-        }
-        return null;
-        },
-        style: TextStyle(color: Color(0xff6d30bc)),
+              );
+            },
+          ),
         ),
-        );
-        }).toList(),
-        SizedBox(height: 16,),
-        Row(children: [
-          Expanded(child: SizedBox(
-            height: 40,
-            child: TextButton(
-                style: TextButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)
-                    )
-                ),
-                onPressed: () {
-                  _addOption();
-                },
-                child: Text("Add option",style: TextStyle(color: Color(0xff6d30bc)),)
-            ),
-          ),),
-          Expanded(child: SizedBox(
-            height: 40,
-            child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xff9e71e7),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)
-                    )
-                ),
-                onPressed: () {
-                  _submitForm();
-                },
-                child: Text("Submit")
-            ),
-          ),),
-        ],),
-    ],
-    ),
-    ),
-    ),
+      ),
     );
   }
 }

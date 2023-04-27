@@ -142,7 +142,7 @@ class SignInPage extends StatelessWidget {
                               child: RichText(
                                 text: TextSpan(children: [
                                    TextSpan(
-                                      text: ('do not have an account'),
+                                      text: ('Do not have an account'),
                                       style: TextStyle(color: Colors.grey)),
                                   WidgetSpan(
                                       child: InkWell(
@@ -172,11 +172,11 @@ class SignInPage extends StatelessWidget {
                                         content: Text(failure.map(
                                             remoteError: (remoteError) =>
                                                 remoteError.errorName,
-                                            serverError: (_) => ('server error'),
+                                            serverError: (_) => ('Server error'),
                                             emailAlreadyInUse: (_) =>
-                                            ('email already in use'),
+                                            ('Email already in use'),
                                             invalidEmailAndPassword: (_) =>
-                                                ("invalid email and password"))))),
+                                                ("Invalid email and password"))))),
                                 (r) {
                               context
                                   .read<ProfileWatcherCubit>()

@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SurveyFormState {
   Survey get survey => throw _privateConstructorUsedError;
-  AutovalidateMode? get showErrorMessages => throw _privateConstructorUsedError;
+  AutovalidateMode get showErrorMessages => throw _privateConstructorUsedError;
   bool get isProcessing => throw _privateConstructorUsedError;
   Option<Either<FirebaseFirestoreFailure, Unit>>
       get surveyFailureSuccessOption => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $SurveyFormStateCopyWith<$Res> {
   @useResult
   $Res call(
       {Survey survey,
-      AutovalidateMode? showErrorMessages,
+      AutovalidateMode showErrorMessages,
       bool isProcessing,
       Option<Either<FirebaseFirestoreFailure, Unit>>
           surveyFailureSuccessOption});
@@ -57,7 +57,7 @@ class _$SurveyFormStateCopyWithImpl<$Res, $Val extends SurveyFormState>
   @override
   $Res call({
     Object? survey = null,
-    Object? showErrorMessages = freezed,
+    Object? showErrorMessages = null,
     Object? isProcessing = null,
     Object? surveyFailureSuccessOption = null,
   }) {
@@ -66,10 +66,10 @@ class _$SurveyFormStateCopyWithImpl<$Res, $Val extends SurveyFormState>
           ? _value.survey
           : survey // ignore: cast_nullable_to_non_nullable
               as Survey,
-      showErrorMessages: freezed == showErrorMessages
+      showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
-              as AutovalidateMode?,
+              as AutovalidateMode,
       isProcessing: null == isProcessing
           ? _value.isProcessing
           : isProcessing // ignore: cast_nullable_to_non_nullable
@@ -100,7 +100,7 @@ abstract class _$$_SurveyFormStateCopyWith<$Res>
   @useResult
   $Res call(
       {Survey survey,
-      AutovalidateMode? showErrorMessages,
+      AutovalidateMode showErrorMessages,
       bool isProcessing,
       Option<Either<FirebaseFirestoreFailure, Unit>>
           surveyFailureSuccessOption});
@@ -121,7 +121,7 @@ class __$$_SurveyFormStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? survey = null,
-    Object? showErrorMessages = freezed,
+    Object? showErrorMessages = null,
     Object? isProcessing = null,
     Object? surveyFailureSuccessOption = null,
   }) {
@@ -130,10 +130,10 @@ class __$$_SurveyFormStateCopyWithImpl<$Res>
           ? _value.survey
           : survey // ignore: cast_nullable_to_non_nullable
               as Survey,
-      showErrorMessages: freezed == showErrorMessages
+      showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
-              as AutovalidateMode?,
+              as AutovalidateMode,
       isProcessing: null == isProcessing
           ? _value.isProcessing
           : isProcessing // ignore: cast_nullable_to_non_nullable
@@ -151,14 +151,14 @@ class __$$_SurveyFormStateCopyWithImpl<$Res>
 class _$_SurveyFormState implements _SurveyFormState {
   _$_SurveyFormState(
       {required this.survey,
-      this.showErrorMessages,
+      required this.showErrorMessages,
       required this.isProcessing,
       required this.surveyFailureSuccessOption});
 
   @override
   final Survey survey;
   @override
-  final AutovalidateMode? showErrorMessages;
+  final AutovalidateMode showErrorMessages;
   @override
   final bool isProcessing;
   @override
@@ -200,7 +200,7 @@ class _$_SurveyFormState implements _SurveyFormState {
 abstract class _SurveyFormState implements SurveyFormState {
   factory _SurveyFormState(
       {required final Survey survey,
-      final AutovalidateMode? showErrorMessages,
+      required final AutovalidateMode showErrorMessages,
       required final bool isProcessing,
       required final Option<Either<FirebaseFirestoreFailure, Unit>>
           surveyFailureSuccessOption}) = _$_SurveyFormState;
@@ -208,7 +208,7 @@ abstract class _SurveyFormState implements SurveyFormState {
   @override
   Survey get survey;
   @override
-  AutovalidateMode? get showErrorMessages;
+  AutovalidateMode get showErrorMessages;
   @override
   bool get isProcessing;
   @override
