@@ -7,7 +7,7 @@ import 'package:survey/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:survey/injection.dart';
 import 'package:survey/presentation/core/widgets/custom_scaffold.dart';
 import 'package:survey/presentation/sign_in/sign_up_page.dart';
-import 'package:survey/presentation/survey/create_page.dart';
+import 'package:survey/presentation/survey/survey_form/survey_form_page.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);

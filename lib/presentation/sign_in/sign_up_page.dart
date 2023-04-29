@@ -10,7 +10,7 @@ import 'package:survey/domain/survey/value_objects.dart';
 import 'package:survey/injection.dart';
 import 'package:survey/presentation/core/widgets/custom_scaffold.dart';
 import 'package:survey/presentation/sign_in/sign_in_page.dart';
-import 'package:survey/presentation/survey/create_page.dart';
+import 'package:survey/presentation/survey/survey_form/survey_form_page.dart';
 import 'package:survey/presentation/survey/survey_page.dart';
 
 class SignUpPage extends StatelessWidget {

@@ -9,7 +9,7 @@ import 'package:survey/application/survey/survey_watcher/survey_watcher_cubit.da
 import 'package:survey/injection.dart';
 import 'package:survey/presentation/sign_in/sign_in_page.dart';
 import 'package:survey/presentation/splash/splash_page.dart';
-import 'package:survey/presentation/survey/create_page.dart';
+import 'package:survey/presentation/survey/survey_form/survey_form_page.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);

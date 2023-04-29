@@ -5,7 +5,7 @@ import 'package:survey/domain/survey/survey.dart';
 import 'package:survey/presentation/core/widgets/custom_progress_indicator.dart';
 import 'package:survey/presentation/core/widgets/custom_scaffold.dart';
 import 'package:survey/presentation/core/widgets/new_survey_form.dart';
-import 'package:survey/presentation/survey/create_page.dart';
+import 'package:survey/presentation/survey/survey_form/survey_form_page.dart';
 import 'package:survey/presentation/survey/widgets/survey_card.dart';
 
 class SurveyOverviewPage extends StatelessWidget {
@@ -50,7 +50,7 @@ class SurveyOverviewPage extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => SurveyCreationPage(),
+        builder: (context) => SurveyFormPage(),
       ),
     );
 }
