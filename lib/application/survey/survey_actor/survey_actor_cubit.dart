@@ -7,7 +7,6 @@ import 'package:survey/domain/survey/survey_failure.dart';
 import 'package:survey/domain/survey/survey_result.dart';
 
 part 'survey_actor_state.dart';
-
 part 'survey_actor_cubit.freezed.dart';
 
 @injectable
