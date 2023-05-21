@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:injectable/injectable.dart';
 import 'package:survey/domain/auth/i_auth_facade.dart';
 import 'package:survey/domain/core/errors.dart';
@@ -101,24 +101,64 @@ class SurveyRepository implements ISurveyRepository {
 
   @override
   Future<Either<FirebaseFirestoreFailure, Unit>> addSurveyResponse(
-      Survey survey, Map<String, dynamic> response) {
-    // TODO: implement addSurveyResponse
-    throw UnimplementedError();
+      Survey survey, Map<String, dynamic> response) async {
+    try {
+      await survey.reference.collection('responses').add(response);
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e.message!.contains('PERMISSION_DENIED')) {
+        return left(const FirebaseFirestoreFailure.insufficientPermission());
+      } else {
+        return left(const FirebaseFirestoreFailure.unexpected());
+      }
+    }
   }
 
   @override
-  Future<Either<FirebaseFirestoreFailure, Map<String, dynamic>>>
-      getSurveyResponses(Survey survey) {
-    // TODO: implement getSurveyResponses
-    throw UnimplementedError();
+  Future<Either<FirebaseFirestoreFailure, Map<String, dynamic>>> getSurveyResponses(Survey survey) async {
+    try {
+      final querySnapshot = await survey.reference.collection('responses').get();
+      final responses = querySnapshot.docs.fold<Map<String, dynamic>>(
+        {},
+            (map, doc) => map..[doc.id] = doc.data(),
+      );
+      return right(responses);
+    } on FirebaseException catch (e) {
+      if (e.message!.contains('PERMISSION_DENIED')) {
+        return left(const FirebaseFirestoreFailure.insufficientPermission());
+      } else {
+        return left(const FirebaseFirestoreFailure.unexpected());
+      }
+    }
   }
 
+
+
   @override
-  Future<Either<FirebaseFirestoreFailure, List<Survey>>> getUserSurveys(
-      DocumentReference documentReference) {
-    // TODO: implement getUserSurveys
-    throw UnimplementedError();
+  Future<Either<FirebaseFirestoreFailure, List<Survey>>> getUserSurveys(DocumentReference<Object?> userDocumentRef) async {
+    try {
+      final userOption = _authFacade.getSignedInUserId();
+      final userId = "users/${userOption.getOrElse(() => throw NotAuthenticatedError())}";
+      final data = (await firebaseFirestore
+          .surveyCollection
+          .where("owner", isEqualTo: firebaseFirestore.doc(userId))
+          .get());
+
+      List<Survey> surveys = (await Future.wait(
+        data.docs.map((survey) async {
+          return SurveyDto.fromFirestore(survey).toDomain();
+        }),
+      )).toList();
+      return right(surveys);
+    } on FirebaseException catch (e) {
+      if (e.message!.contains('PERMISSION_DENIED')) {
+        return left(const FirebaseFirestoreFailure.insufficientPermission());
+      } else {
+        return left(const FirebaseFirestoreFailure.unexpected());
+      }
+    }
   }
+
 
   @override
   Future<Either<FirebaseFirestoreFailure, Unit>> addSurveyResult(

@@ -4,8 +4,8 @@ import 'package:survey/domain/auth/value_objects.dart';
 part 'user.freezed.dart';
 @freezed
 abstract class User with _$User{
-  factory User({required UserName userName, required EmailAddress emailAddress
-    ,required DocumentReference reference})=_User;
+  factory User({required UserName userName, required EmailAddress emailAddress,
+    required DocumentReference reference})=_User;
   
   factory User.empty() {
     final dummyRef=FirebaseFirestore.instance.doc("i");

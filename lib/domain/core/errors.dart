@@ -1,4 +1,3 @@
-
 import 'package:survey/domain/core/failures.dart';
 
 class NotAuthenticatedError extends Error{}
