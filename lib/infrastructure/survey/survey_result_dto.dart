@@ -22,6 +22,16 @@ abstract class SurveyResultDto implements _$SurveyResultDto {
         required DocumentReference participantReference,
   }) = _SurveyResultDto;
 
+  factory SurveyResultDto.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
+    final data = doc.data()!;
+    return SurveyResultDto(
+      answers: List<int>.from(data['answers']),
+      date: data['date'] as Timestamp,
+      surveyReference: data['surveyReference'] as DocumentReference,
+      participantReference: data['participantReference'] as DocumentReference,
+    );
+  }
+
   factory SurveyResultDto.fromDomain(SurveyResult surveyResult) {
     return SurveyResultDto(
       answers: surveyResult.answers,

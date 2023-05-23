@@ -13,4 +13,5 @@ abstract class ISurveyRepository {
   Future<Either<FirebaseFirestoreFailure, Unit>> deleteSurvey(Survey survey);
   Future<Either<FirebaseFirestoreFailure, Unit>> addSurveyResult(SurveyResult surveyResult);
   Future<Either<FirebaseFirestoreFailure, Map<String, dynamic>>> getSurveyResponses(Survey survey);
+  Future<Either<FirebaseFirestoreFailure, List<SurveyResult>>> watchAllSurveyResults(String surveyId);
 }

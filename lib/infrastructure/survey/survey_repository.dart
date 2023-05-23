@@ -18,18 +18,16 @@ class SurveyRepository implements ISurveyRepository {
   final FirebaseFirestore firebaseFirestore;
   final IAuthFacade _authFacade;
 
-  SurveyRepository(
-    this.firebaseFirestore,
-    this._authFacade,
-  );
+  SurveyRepository(this.firebaseFirestore,
+      this._authFacade,);
 
   @override
   Stream<Either<FirebaseFirestoreFailure, List<Survey>>>
-      watchAllSurveys() async* {
+  watchAllSurveys() async* {
     Stream<Either<FirebaseFirestoreFailure, List<SurveyDto>>> dtoStream =
-        firebaseFirestore.surveyCollection.snapshots().map((surveys) =>
-            right<FirebaseFirestoreFailure, List<SurveyDto>>(
-                surveys.docs.map((survey) {
+    firebaseFirestore.surveyCollection.snapshots().map((surveys) =>
+        right<FirebaseFirestoreFailure, List<SurveyDto>>(
+            surveys.docs.map((survey) {
               return SurveyDto.fromFirestore(survey);
             }).toList()));
     await for (final dtoSurvey in dtoStream) {
@@ -50,7 +48,7 @@ class SurveyRepository implements ISurveyRepository {
       survey = survey.copyWith(
           owner: FirebaseFirestore.instance.userCollection.doc(userId));
       final projectDto =
-          SurveyDto.fromDomain(survey).copyWith(reference: null).toJson();
+      SurveyDto.fromDomain(survey).copyWith(reference: null).toJson();
       await firebaseFirestore.surveyCollection.add(projectDto);
       return right(unit);
     } on FirebaseException catch (e) {
@@ -115,9 +113,11 @@ class SurveyRepository implements ISurveyRepository {
   }
 
   @override
-  Future<Either<FirebaseFirestoreFailure, Map<String, dynamic>>> getSurveyResponses(Survey survey) async {
+  Future<Either<FirebaseFirestoreFailure,
+      Map<String, dynamic>>> getSurveyResponses(Survey survey) async {
     try {
-      final querySnapshot = await survey.reference.collection('responses').get();
+      final querySnapshot = await survey.reference.collection('responses')
+          .get();
       final responses = querySnapshot.docs.fold<Map<String, dynamic>>(
         {},
             (map, doc) => map..[doc.id] = doc.data(),
@@ -133,12 +133,13 @@ class SurveyRepository implements ISurveyRepository {
   }
 
 
-
   @override
-  Future<Either<FirebaseFirestoreFailure, List<Survey>>> getUserSurveys(DocumentReference<Object?> userDocumentRef) async {
+  Future<Either<FirebaseFirestoreFailure, List<Survey>>> getUserSurveys(
+      DocumentReference<Object?> userDocumentRef) async {
     try {
       final userOption = _authFacade.getSignedInUserId();
-      final userId = "users/${userOption.getOrElse(() => throw NotAuthenticatedError())}";
+      final userId = "users/${userOption
+          .getOrElse(() => throw NotAuthenticatedError())}";
       final data = (await firebaseFirestore
           .surveyCollection
           .where("owner", isEqualTo: firebaseFirestore.doc(userId))
@@ -168,9 +169,9 @@ class SurveyRepository implements ISurveyRepository {
       final userId = userOption.getOrElse(() => throw NotAuthenticatedError());
       surveyResult = surveyResult.copyWith(
           participantReference:
-              FirebaseFirestore.instance.userCollection.doc(userId));
+          FirebaseFirestore.instance.userCollection.doc(userId));
       final surveyDto =
-          SurveyResultDto.fromDomain(surveyResult).copyWith().toJson();
+      SurveyResultDto.fromDomain(surveyResult).copyWith().toJson();
       await firebaseFirestore.surveyResultCollection.add(surveyDto);
       return right(unit);
     } on FirebaseException catch (e) {
@@ -181,4 +182,24 @@ class SurveyRepository implements ISurveyRepository {
       }
     }
   }
+
+  @override
+  Future<Either<FirebaseFirestoreFailure, List<SurveyResult>>> watchAllSurveyResults(String surveyId) async {
+    try {
+      final surveyReference = firebaseFirestore.collection('surveys').doc(surveyId);
+      final querySnapshot = await surveyReference.collection('results').get();
+      final surveyResultDtoList = querySnapshot.docs
+          .map((doc) => SurveyResultDto.fromFirestore(doc))
+          .toList();
+      final surveyResultList = surveyResultDtoList.map((dto) => dto.toDomain()).toList();
+      return right(surveyResultList);
+    } on FirebaseException catch (e) {
+      if (e.message!.contains('PERMISSION_DENIED')) {
+        return left(const FirebaseFirestoreFailure.insufficientPermission());
+      } else {
+        return left(const FirebaseFirestoreFailure.unexpected());
+      }
+    }
+  }
+
 }
